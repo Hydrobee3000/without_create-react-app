@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 module.exports = {
   mode: 'development', //режим разработки
   target: 'web',
-  entry: './src/index.js', //входная точка
+  entry: ['@babel/polyfill', './src/index.jsx'], //входной файл
   output: {
     //вывод в
     path: path.resolve(__dirname, 'dist'),
@@ -30,6 +30,26 @@ module.exports = {
       {
         test: /\.(jpg|jpeg|png|svg|gif)$/,
         use: ['file-loader'],
+      },
+      {
+        test: /\.m?js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+          },
+        },
+      },
+      {
+        test: /\.m?jsx$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
     ],
   },
