@@ -32,7 +32,7 @@ module.exports = {
         use: ['file-loader'],
       },
       {
-        test: /\.m?js$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
@@ -42,12 +42,12 @@ module.exports = {
         },
       },
       {
-        test: /\.m?jsx$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react'],
+            presets: ['@babel/preset-react', '@babel/preset-env'],
           },
         },
       },

@@ -12,6 +12,7 @@
   "author": "Alexey",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.12.1",
     "file-loader": "^6.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
@@ -19,6 +20,7 @@
   "devDependencies": {
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
+    "@babel/preset-react": "^7.16.5",
     "babel-loader": "^8.2.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.5.1",
