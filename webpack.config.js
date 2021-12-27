@@ -10,14 +10,16 @@ module.exports = {
   output: {
     //вывод в
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js', //генерирует каждый раз новое название для бандла
+    filename: '[name].[hash].js', //генерирует каждый раз новое, уникальное название для бандла
   },
   devServer: {
     static: './src',
     port: 3000,
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   plugins: [
-    // new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({ template: './src/index.html' }), //сгенерирует HTML-файл
     new CleanWebpackPlugin(), //очищает  старые неиспользуемые бандлы
   ],
