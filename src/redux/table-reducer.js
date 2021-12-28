@@ -1,3 +1,5 @@
+const GET_DATA = 'GET_DATA'
+
 const defaultState = {
   items: [],
   isFetching: true,
@@ -5,12 +7,17 @@ const defaultState = {
 
 function tableReducer(state = defaultState, action) {
   switch (action.type) {
-    //  case 'counter/incremented':
-    //    return { value: state.value + 1 }
+    case 'SET_DATA':
+      return {
+        ...state,
+        items: action.payload,
+      }
 
     default:
       return state
   }
 }
+
+const setData = (data) => ({ type: SET_DATA, payload: data })
 
 export default tableReducer

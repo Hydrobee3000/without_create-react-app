@@ -1,16 +1,23 @@
 import React, { useEffect, useState } from 'react'
-import { mockAPI } from './api/api'
 import axios from 'axios'
+import Container from '@mui/material/Container'
+import MainTable from './Table/Table'
+import Header from './Header/Header'
 import s from './App.module.css'
 
 const App = () => {
-  let result = mockAPI.getData()
   useEffect(() => {
     axios.get('/data').then(function (response) {
       console.log(response.data)
     })
   }, [])
-  return <div>Done</div>
+
+  return (
+    <Container maxWidth='sx'>
+      <Header />
+      <MainTable />
+    </Container>
+  )
 }
 
 export default App
