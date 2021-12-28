@@ -10,7 +10,7 @@ mock.onGet('/data').reply(200, {
     { name: 3, value: 654765865426 },
     { name: 4, value: 5476586564326 },
     { name: 5, value: 2657676545458 },
-    { name: 6, value: 0675464653 },
+    { name: 6, value: 675464653 },
   ],
 })
 
