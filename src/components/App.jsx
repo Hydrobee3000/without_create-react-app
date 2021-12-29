@@ -4,14 +4,11 @@ import Container from '@mui/material/Container'
 import MainTable from './Table/Table'
 import Header from './Header/Header'
 import s from './App.module.css'
+import { useSelector } from 'react-redux'
 
 const App = () => {
-  useEffect(() => {
-    axios.get('/data').then(function (response) {
-      console.log(response.data)
-    })
-  }, [])
-
+  const dataTable = useSelector((state) => state.tableReducer.items)
+  console.log(dataTable)
   return (
     <Container maxWidth='sx'>
       <Header />

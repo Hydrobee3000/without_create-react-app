@@ -4,9 +4,12 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
+import { useDispatch } from 'react-redux'
+import { fetchData } from '../../redux/tableReducer'
 
 const Header = () => {
+  const dispatch = useDispatch()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position='static'>
@@ -14,7 +17,9 @@ const Header = () => {
           <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
             Table with some data
           </Typography>
-          <Button color='inherit'>Get</Button>
+          <Button color='inherit' onClick={() => dispatch(fetchData())}>
+            Get
+          </Button>
         </Toolbar>
       </AppBar>
     </Box>

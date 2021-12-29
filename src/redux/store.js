@@ -1,8 +1,14 @@
-import { combineReducers, createStore } from 'redux'
-import tableReducer from './table-reducer'
+import { combineReducers, createStore, applyMiddleware } from 'redux'
+import createSagaMiddleware from 'redux-saga'
+import { tableWatcher } from '../saga/tableSaga'
+import tableReducer from './tableReducer'
+
+const sagaMiddleware = createSagaMiddleware()
 
 const rootReducer = combineReducers({
-  table: tableReducer,
+  tableReducer,
 })
 
-export const store = createStore(rootReducer)
+export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
+
+sagaMiddleware.run(tableWatcher)

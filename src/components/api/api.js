@@ -1,7 +1,8 @@
 export var axios = require('axios')
 var MockAdapter = require('axios-mock-adapter')
 
-var mock = new MockAdapter(axios)
+// var mock = new MockAdapter(axios)
+var mock = new MockAdapter(axios, { delayResponse: 2000 })
 
 mock.onGet('/data').reply(200, {
   data: [
