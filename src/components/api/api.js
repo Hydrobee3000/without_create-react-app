@@ -2,16 +2,15 @@ export var axios = require('axios')
 var MockAdapter = require('axios-mock-adapter')
 
 // var mock = new MockAdapter(axios)
-var mock = new MockAdapter(axios, { delayResponse: 2000 })
+var mock = new MockAdapter(axios, { delayResponse: 1000 }) //задержка 1 секунда
 
 mock.onGet('/data').reply(200, {
   data: [
-    { name: 1, value: 567583643454 },
-    { name: 2, value: 67865553434 },
-    { name: 3, value: 654765865426 },
-    { name: 4, value: 5476586564326 },
-    { name: 5, value: 2657676545458 },
-    { name: 6, value: 675464653 },
+    { name: 'Valorian', value: 567583643454, street: 'Lebovsky' },
+    { name: 'Gregory', value: 67865553434, street: 'Chuikovsky' },
+    { name: 'Winter', value: 654765865426, street: 'Vaichovsky' },
+    { name: 'Victor', value: 5476586564326, street: 'Mayakovsky' },
+    { name: 'Andy', value: 2657676545458, street: 'Dobrovolsky' },
   ],
 })
 

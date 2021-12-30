@@ -8,7 +8,7 @@ const defaultState = {
 
 function tableReducer(state = defaultState, action) {
   switch (action.type) {
-    case SET_DATA:
+    case SET_DATA: //set data in state
       return {
         ...state,
         items: action.payload,
