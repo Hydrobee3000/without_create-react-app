@@ -3,6 +3,7 @@ const webpack = require('webpack') //to access built-in plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+ //fref
 
 module.exports = {
   mode: 'development', //режим разработки
