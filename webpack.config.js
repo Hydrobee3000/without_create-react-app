@@ -1,58 +1,68 @@
 const path = require('path')
 const webpack = require('webpack') //to access built-in plugins
-const HtmlWebpackPlugin = require('html-webpack-plugin') //installed via npm
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   mode: 'development', //режим разработки
-  target: 'web',
   entry: ['@babel/polyfill', './src/index.jsx'], //входной файл
+
+  //куда файлы отправятся после объединения
   output: {
-    //вывод в
+    //имя создаваемого каталога, в котором будут храниться все связанные файлы
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[hash].js', //генерирует каждый раз новое, уникальное название для бандла
+    //название для бандла
+    filename: '[name].[hash].js', //генерирует каждый раз новое, уникальное название для
+    // filename: 'bundle.js'
   },
+  //используется для разработки
   devServer: {
-    static: './src',
     port: 3000,
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  plugins: [
-    new HtmlWebpackPlugin({ template: './src/index.html' }), //сгенерирует HTML-файл
-    new CleanWebpackPlugin(), //очищает  старые неиспользуемые бандлы
-  ],
+  //правила того, как webpack будет собирать, компилировать и связывать файлы для браузера
   module: {
     rules: [
       {
+        test: /\.(jsx|js)$/,
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: 'defaults',
+                  },
+                ],
+                '@babel/preset-react',
+              ],
+            },
+          },
+        ],
+      },
+      {
         test: /\.(css)$/,
-        use: ['style-loader', 'css-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'], //!важен порядок
+        // порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
+        //затем запускает style-loader который извлекает css в файлы в виде строки
       },
       {
-        test: /\.(jpg|jpeg|png|svg|gif)$/,
+        test: /\.(png|jp(e*)g|svg|gif)$/,
         use: ['file-loader'],
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env'],
-          },
-        },
-      },
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-react', '@babel/preset-env'],
-          },
-        },
       },
     ],
   },
+  plugins: [
+    //плагин для webpack, чтобы он знал какому следовать шаблону html-файла для запуска
+    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new MiniCssExtractPlugin(),
+    new CleanWebpackPlugin(), //очищает  старые неиспользуемые бандлы
+  ],
 }

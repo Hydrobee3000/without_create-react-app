@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
 import { fetchData } from '../../redux/tableReducer'
+import s from './Header.module.css'
 
 const Header = () => {
   const dispatch = useDispatch()
