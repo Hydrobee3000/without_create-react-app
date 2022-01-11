@@ -21,6 +21,6 @@ function tableReducer(state = defaultState, action) {
 }
 
 export const setData = (data) => ({ type: SET_DATA, payload: data }) //устанавливает данные в стейт
-export const fetchData = (data) => ({ type: FETCH_DATA, payload: data }) // Action creator для отслеживания сагой
+export const fetchData = (data) => ({ type: FETCH_DATA }) // Action creator для отслеживания сагой
 
 export default tableReducer

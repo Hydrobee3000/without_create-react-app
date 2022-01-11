@@ -12,7 +12,7 @@ const MainTable = () => {
   const dataTable = useSelector((state) => state.tableReducer.items.data)
   const loading = useSelector((state) => state.tableReducer.isFetching)
   if (loading) {
-    return <div>Запросите данные и ожидайте..</div>
+    return <div style={{textAlign: 'center', marginTop: '20px'}}>Запросите данные и ожидайте..</div>
   }
   return (
     <TableContainer component={Paper}>

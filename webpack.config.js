@@ -1,5 +1,6 @@
 const path = require('path')
-const webpack = require('webpack') //to access built-in plugins
+/*для доступа к встроенным плагинам */
+const webpack = require('webpack') 
 /* шаблон html */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 /* очистка сборки */
@@ -12,6 +13,7 @@ const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
 /* минификация изображений */
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 const { extendDefaultPlugins } = require('svgo')
+
 
 module.exports = {
   mode: 'development', //режим разработки
@@ -57,9 +59,9 @@ module.exports = {
       },
       {
         test: /\.(css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'], //!важен порядок
+        use: [MiniCssExtractPlugin.loader, 'css-loader'], 
         /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
-        затем запускает style-loader который извлекает css в файлы в виде строки */
+        затем запускает MiniCssExtractPlugin.loader для минификации */
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
