@@ -1,3 +1,4 @@
+/* предоставляет утилиты для работы с путями к файлам и каталогам */
 const path = require('path')
 /*для доступа к встроенным плагинам */
 const webpack = require('webpack') 
@@ -5,8 +6,9 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 /* очистка сборки */
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-/* минификация js */
+/* минификация css */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+/* минификация js */
 const TerserPlugin = require('terser-webpack-plugin')
 /* минификация html */
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
@@ -23,7 +25,7 @@ module.exports = {
     /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
     path: path.resolve(__dirname, 'dist'),
     /* название для бандла */
-    filename: 'bundle.js', //генерирует каждый раз новое, уникальное название для
+    filename: 'bundle.js', 
   },
   /* используется для разработки */
   devServer: {
