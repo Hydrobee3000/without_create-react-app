@@ -6,7 +6,7 @@ import s from './App.module.css'
 
 const App = () => {
   return (
-    <Container maxWidth='sx'>
+    <Container maxWidth='sx' style={{padding: '0'}}>
       <Header />
       <MainTable />
     </Container>
