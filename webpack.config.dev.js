@@ -14,6 +14,7 @@ module.exports = {
   },
   devServer: {
     port: 3000,
+    static: './dist',
     hot: true,
   },
   resolve: {
