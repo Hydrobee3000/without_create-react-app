@@ -5,7 +5,6 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
-
 module.exports = {
   mode: 'development', 
   entry: ['@babel/polyfill', './src/index.js'], 
@@ -31,6 +30,22 @@ module.exports = {
         test: /\.(css)$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader'], 
       },
+      
+      /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
+        затем запускает MiniCssExtractPlugin.loader для минификации 
+        {
+          test: /\.(s[ac]|c)ss$/i,
+          use: [
+            // {
+            //   loader: MiniCssExtractPlugin.loader,
+            //   options: { publicPath: "" },
+            // },
+            "style-loader",
+            "css-loader",
+            "sass-loader",
+          ],
+        },
+        */
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         type: 'asset',
@@ -44,3 +59,7 @@ module.exports = {
     new ReactRefreshWebpackPlugin()
   ],
 }
+
+/*
+{filename: 'style.css',}
+*/

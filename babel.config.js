@@ -17,6 +17,8 @@ module.exports = {
       /*
       @babel/preset-react добавляет поддержку jsx синтаксиса (реакт)
       время выполнения "automatic" импортирует функции, которые транспилирует jsx */
+       // Runtime automatic with React 17+ allows not importing React
+       // in files only using JSX (no state or React methods)
     ],
    
       plugins: plugins,
