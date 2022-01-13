@@ -4,7 +4,7 @@ import App from './components/App'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
 import 'normalize.css'
-import './index.scss'
+import './index.less'
 
 render(
   <Provider store={store}>

@@ -48,8 +48,18 @@ module.exports = {
       {
         test: /\.(s[ac]|c)ss$/,
         use: [MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"], 
+        // compiles scss to CSS
         /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
+      },
+      {
+        test: /\.less$/i,
+        use: [
+          // compiles Less to CSS
+          "style-loader",
+          "css-loader",
+          "less-loader",
+        ],
       },
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
