@@ -18,7 +18,7 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = {
   mode: 'development', //режим разработки
-  entry: ['@babel/polyfill', './src/index.jsx'], //входной файл и включние полифилла 
+  entry: ['@babel/polyfill', './src/index.js'], //входной файл и включние полифилла 
 
   /* куда файлы отправятся после объединения */
   output: {
@@ -30,6 +30,7 @@ module.exports = {
   /* используется для разработки */
   devServer: {
     port: 3000,
+    static: "./dist"
   },
     /* разрешение определенных файлов */
   resolve: {
