@@ -30,7 +30,8 @@ module.exports = {
   /* используется для разработки */
   devServer: {
     port: 3000,
-    static: "./dist"
+    static: "./dist",
+    hot: true,
   },
     /* разрешение определенных файлов */
   resolve: {
@@ -45,8 +46,8 @@ module.exports = {
         use: ['babel-loader'],
       },
       {
-        test: /\.(css)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader'], 
+        test: /\.(s[ac]|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"], 
         /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
       },
