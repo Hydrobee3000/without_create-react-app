@@ -1,8 +1,0 @@
-{
-    "presets": ["@babel/preset-env", "@babel/preset-react"]
-
-    /*
-    @babel/preset-env говорит webpack скопилировать весь синтаксис в ES5(который понимают браузеры)
-    @babel/preset-react добавляет поддержку jsx синтаксиса (реакт)
-    */
-  }

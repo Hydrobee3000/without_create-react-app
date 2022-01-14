@@ -18,6 +18,7 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 
 module.exports = {
   mode: 'development', //режим разработки
+  target: 'web',
   entry: ['@babel/polyfill', './src/index.js'], //входной файл и включние полифилла 
 
   /* куда файлы отправятся после объединения */
@@ -47,7 +48,15 @@ module.exports = {
       },
       {
         test: /\.(s[ac]|c)ss$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', "sass-loader"], 
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            // This is required for asset imports in CSS, such as url()
+            options: { publicPath: "" },
+          }, 
+          'css-loader', 
+          "sass-loader"
+        ], 
         // compiles scss to CSS
         /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
@@ -61,9 +70,31 @@ module.exports = {
           "less-loader",
         ],
       },
+      // {
+      //   test: /\.(jpe?g|png|gif|svg)$/i,
+      //   type: 'asset',
+      // },
       {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        type: 'asset',
+        test: /\.(png|jpe?g|gif|svg)$/i,
+        /**
+         * The `type` setting replaces the need for "url-loader"
+         * and "file-loader" in Webpack 5.
+         *
+         * setting `type` to "asset" will automatically pick between
+         * outputing images to a file, or inlining them in the bundle as base64
+         * with a default max inline size of 8kb
+         */
+        type: "asset",
+
+        /**
+         * If you want to inline larger images, you can set
+         * a custom `maxSize` for inline like so:
+         */
+        // parser: {
+        //   dataUrlCondition: {
+        //     maxSize: 30 * 1024,
+        //   },
+        // },
       },
     ],
   },
@@ -82,33 +113,33 @@ module.exports = {
         parallel: true,
       }),
       new HtmlMinimizerPlugin(),
-      new ImageMinimizerPlugin({
-        minimizer: {
-          implementation: ImageMinimizerPlugin.imageminMinify,
-          options: {
-            // Lossless optimization with custom option
-            plugins: [
-              ['gifsicle', { interlaced: true }],
-              ['jpegtran', { progressive: true }],
-              ['optipng', { optimizationLevel: 5 }],
-              // Svgo configuration here https://github.com/svg/svgo#configuration
-              [
-                {
-                  name: 'preset-default',
-                  params: {
-                    overrides: {
-                      // customize default plugin options
-                      inlineStyles: {
-                        onlyMatchedOnce: false,
-                      },
-                    },
-                  },
-                },
-              ],
-            ],
-          },
-        },
-      }),
+      // new ImageMinimizerPlugin({
+      //   minimizer: {
+      //     implementation: ImageMinimizerPlugin.imageminMinify,
+      //     options: {
+      //       // Lossless optimization with custom option
+      //       plugins: [
+      //         ['gifsicle', { interlaced: true }],
+      //         ['jpegtran', { progressive: true }],
+      //         ['optipng', { optimizationLevel: 5 }],
+      //         // Svgo configuration here https://github.com/svg/svgo#configuration
+      //         [
+      //           {
+      //             name: 'preset-default',
+      //             params: {
+      //               overrides: {
+      //                 // customize default plugin options
+      //                 inlineStyles: {
+      //                   onlyMatchedOnce: false,
+      //                 },
+      //               },
+      //             },
+      //           },
+      //         ],
+      //       ],
+      //     },
+      //   },
+      // }),
     ],
   },
 }

@@ -7,6 +7,7 @@ import Button from '@mui/material/Button'
 import { useDispatch } from 'react-redux'
 import { fetchData } from '../../redux/tableReducer'
 import s from './Header.module.css'
+import image from '../../../images/square_320_c09ebae17387b7d6eeb9fa0d42afe5ee.jpg'
 
 const Header = () => {
   const dispatch = useDispatch()
@@ -21,6 +22,8 @@ const Header = () => {
           <Button color='inherit' onClick={() => dispatch(fetchData())}>
             Get
           </Button>
+          <img src={image} alt="image" width="250" />
+    
         </Toolbar>
       </AppBar>
     </Box>
