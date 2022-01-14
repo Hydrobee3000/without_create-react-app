@@ -27,6 +27,8 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     /* название для бандла */
     filename: 'bundle.js', 
+    assetModuleFilename: "images/[hash][ext]",
+
   },
   /* используется для разработки */
   devServer: {
@@ -84,7 +86,7 @@ module.exports = {
          * outputing images to a file, or inlining them in the bundle as base64
          * with a default max inline size of 8kb
          */
-        type: "asset",
+        type: "asset",  //or asset/resource
 
         /**
          * If you want to inline larger images, you can set
