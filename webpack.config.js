@@ -107,7 +107,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),    //очищает  старые неиспользуемые бандлы
     /* плагин для webpack, чтобы он знал какому следовать шаблону html-файла для запуска */
-    new HtmlWebpackPlugin({ template: './src/index.html' }),
+    new HtmlWebpackPlugin({ template: './public/index.html' }),
     new MiniCssExtractPlugin(),
   ],
 
