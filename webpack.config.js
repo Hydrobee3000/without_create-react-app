@@ -66,8 +66,7 @@ module.exports = {
       {
         test: /\.less$/i,
         use: [
-          // compiles Less to CSS
-          "style-loader",
+          MiniCssExtractPlugin.loader,
           "css-loader",
           "less-loader",
         ],
@@ -98,13 +97,18 @@ module.exports = {
         //   },
         // },
       },
+       // Fonts and SVGs: Inline files
+       {
+         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+          type: 'asset/inline'
+        },
     ],
   },
   plugins: [
+    new CleanWebpackPlugin(),    //очищает  старые неиспользуемые бандлы
     /* плагин для webpack, чтобы он знал какому следовать шаблону html-файла для запуска */
     new HtmlWebpackPlugin({ template: './src/index.html' }),
     new MiniCssExtractPlugin(),
-    new CleanWebpackPlugin(), //очищает  старые неиспользуемые бандлы
   ],
 
   optimization: {
