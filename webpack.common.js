@@ -1,36 +1,37 @@
 /* предоставляет утилиты для работы с путями к файлам и каталогам */
-const path = require('path')
+const path = require('path');
 
 /* шаблон html */
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 /* очистка сборки */
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 /* минификация css */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-/* входной файл и включние полифилла для старых браузеров*/ 
-  entry: ['@babel/polyfill', './src/index.js'], 
+/* входной файл и включние полифилла для старых браузеров */
+  entry: ['@babel/polyfill', './src/index.js'],
   /* куда файлы отправятся после объединения */
   output: {
   /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
     path: path.resolve(__dirname, 'dist'),
     /* название для бандла */
-    filename: "[name].bundle.js",
+    filename: '[name].bundle.js',
     // publicPath: "/",
   },
   /* настройка процесса сборки webpack */
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template:'./public/index.html', // файл-шаблон
+      template: './public/index.html', // файл-шаблон
     }),
     new MiniCssExtractPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  /* определяем, как обрабатываются модули в проекте */
+  /* Определяем, как обрабатываются модули в проекте */
+
   module: {
     rules: [
       {
@@ -44,11 +45,11 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             // This is required for asset imports in CSS, such as url()
-            options: { publicPath: "" },
-          }, 
-          'css-loader', 
-          "sass-loader"
-        ], 
+            options: { publicPath: '' },
+          },
+          'css-loader',
+          'sass-loader',
+        ],
         // compiles scss to CSS
         /* порядок справа налево: webpack сперва запускает css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
@@ -57,8 +58,8 @@ module.exports = {
         test: /\.less$/i,
         use: [
           MiniCssExtractPlugin.loader,
-          "css-loader",
-          "less-loader",
+          'css-loader',
+          'less-loader',
         ],
       },
       // {
@@ -75,7 +76,7 @@ module.exports = {
          * outputing images to a file, or inlining them in the bundle as base64
          * with a default max inline size of 8kb
          */
-        type: "asset",  //or asset/resource
+        type: 'asset', // or asset/resource
 
         /**
          * If you want to inline larger images, you can set
@@ -87,11 +88,11 @@ module.exports = {
         //   },
         // },
       },
-       // Fonts and SVGs: Inline files
-       {
-         test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
-          type: 'asset/inline'
-        },
-       ],
+      // Fonts and SVGs: Inline files
+      {
+        test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+        type: 'asset/inline',
+      },
+    ],
   },
 };

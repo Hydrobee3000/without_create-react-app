@@ -7,8 +7,15 @@ const common = require("./webpack.common.js");
 
 /* минификация css */
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
+/* минификация js */
+const TerserPlugin = require("terser-webpack-plugin");
+/* минификация html */
+const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
+/* минификация изображений */
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
+/* сжатые версии ресурсов для их обслуживания с помощью Content-Encoding. */
+const CompressionPlugin = require("compression-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
@@ -26,14 +33,44 @@ module.exports = merge(common, {
       filename: "styles/[name].[contenthash].css",
       chunkFilename: "[id].css",
     }),
+    new CompressionPlugin(),
   ],
 
   optimization: {
     minimize: true,
     minimizer: [
       new TerserPlugin(),
-      new CssMinimizerPlugin()
+      new CssMinimizerPlugin(),
+      new HtmlMinimizerPlugin(),
+      new ImageMinimizerPlugin({
+          minimizer: {
+            implementation: ImageMinimizerPlugin.imageminMinify,
+            options: {
+              // Lossless optimization with custom option
+              plugins: [
+                ['gifsicle', { interlaced: true }],
+                ['jpegtran', { progressive: true }],
+                ['optipng', { optimizationLevel: 5 }],
+                // Svgo configuration here https://github.com/svg/svgo#configuration
+                [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        // customize default plugin options
+                        inlineStyles: {
+                          onlyMatchedOnce: false,
+                        },
+                      },
+                    },
+                  },
+                ],
+              ],
+            },
+          },
+        }),
     ],
+    
     // Once your build outputs multiple chunks, this option will ensure they share the webpack runtime
     // instead of having their own. This also helps with long-term caching, since the chunks will only
     // change when actual code changes, not the webpack runtime.

@@ -7,8 +7,8 @@ module.exports = merge(common, {
   mode: "development",
 
   //контролирует, как генерируются исходные карты
-  devtool: "inline-source-map",
-
+  // devtool: "inline-source-map",
+  devtool: 'cheap-module-source-map',
   /* сервер используется для разработки */
   devServer: {
     historyApiFallback: true,
@@ -17,4 +17,7 @@ module.exports = merge(common, {
     hot: true,
     port: 3000,
   },
+  plugins: [
+    new ErrorOverlayPlugin()
+  ],
 });
