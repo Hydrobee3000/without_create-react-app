@@ -1,3 +1,4 @@
+/* импорты */
 /* предоставляет утилиты для работы с путями к файлам и каталогам */
 const path = require('path');
 
@@ -9,6 +10,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
+
 /* входной файл и включние полифилла для старых браузеров */
   entry: ['@babel/polyfill', './src/index.js'],
   /* куда файлы отправятся после объединения */
@@ -17,23 +19,34 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     /* название для бандла */
     filename: '[name].bundle.js',
+    /* Все ассеты будут складываться в dist/assets */
+    assetModuleFilename: "images/[hash][ext]",
+
     // publicPath: "/",
   },
+
   /* настройка процесса сборки webpack */
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin(), 
     new HtmlWebpackPlugin({
       template: './public/index.html', // файл-шаблон
     }),
     new MiniCssExtractPlugin(),
   ],
+
+    /* разрешение определенных файлов */
   resolve: {
     extensions: ['.js', '.jsx'],
   },
-  /* Определяем, как обрабатываются модули в проекте */
 
+  /* Определяем, как обрабатываются модули в проекте */
   module: {
     rules: [
+      {
+        //Экспортирует HTML как строку. HTML сворачивается, когда этого требует компилятор.
+
+        test: /\.(html)$/, use: ['html-loader'] 
+      },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
@@ -62,10 +75,6 @@ module.exports = {
           'less-loader',
         ],
       },
-      // {
-      //   test: /\.(jpe?g|png|gif|svg)$/i,
-      //   type: 'asset',
-      // },
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         /**
