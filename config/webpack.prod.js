@@ -1,6 +1,7 @@
 /* импорты */
-/* предоставляет утилиты для работы с путями к файлам и каталогам */
-const path = require('path')
+/* импортируем пути из файла paths.js и обращаться будем через переменную paths */
+const paths = require('./paths')
+
 /* функция для объединения нескольких сборок */
 const { merge } = require("webpack-merge");
 /* импортируем общую сборку webpack */
@@ -19,8 +20,9 @@ const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
 /* сжатые версии ресурсов для их обслуживания с помощью Content-Encoding. */
 const CompressionPlugin = require("compression-webpack-plugin");
 
-module.exports = merge(common, {
 
+
+module.exports = merge(common, {        //объединяем настройки 'webpack.common.js' с этими
   /* режим производства */
   mode: "production",
 
@@ -32,7 +34,8 @@ module.exports = merge(common, {
 
   /* Директория, в которой будет
   размещаться итоговый бандл, папка dist в корне приложения */
-    path: path.resolve(__dirname, 'dist'),
+    path: paths.build,
+    publicPath: '/',
   /* Очищает директорию dist перед обновлением бандла
   Свойство стало доступно с версии 5.20.0, до этого использовался
   CleanWebpackPlugin */
@@ -61,36 +64,7 @@ module.exports = merge(common, {
 
     /* средства для оптимизации(перечислены при импорте) */
     minimizer: [
-      new TerserPlugin({
-        terserOptions: {
-          parse: {
-            // We want terser to parse ecma 8 code. However, we don't want it
-            // to apply minification steps that turns valid ecma 5 code
-            // into invalid ecma 5 code. This is why the `compress` and `output`
-            ecma: 8,
-          },
-          compress: {
-            ecma: 5,
-            warning: false,
-            inline: 2,
-          },
-          mangle: {
-            // Find work around for Safari 10+
-            safari10: true,
-          },
-          output: {
-            ecma: 5,
-            comments: false,
-            ascii__only: true,
-          }
-        },
-      
-        // Use multi-process parallel running to improve the build speed
-        parallel: true,
-      
-        // Enable file caching
-        cache: true,
-      }),
+      new TerserPlugin(),
       new CssMinimizerPlugin(),
       new HtmlMinimizerPlugin(),
       new ImageMinimizerPlugin({

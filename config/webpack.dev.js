@@ -4,7 +4,7 @@ const { merge } = require("webpack-merge");
 /* импортируем общую сборку webpack */
 const common = require("./webpack.common.js");
 
-module.exports = merge(common, {
+module.exports = merge(common, {      //объединяем настройки 'webpack.common.js' с этими
   //режим разработки
   mode: "development",
 
