@@ -1,5 +1,5 @@
 /* импорты */
-/* импортируем пути из файла paths.js и обращаться будем через переменную paths */
+/* импортируем пути из файла paths.js и обращаться будем через переменную pathsyyyzz*/
 const paths = require('./paths')
 
 /* функция для объединения нескольких сборок */
@@ -17,8 +17,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 const HtmlMinimizerPlugin = require('html-minimizer-webpack-plugin')
 /* минификация изображений */
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin')
-/* сжатые версии ресурсов для их обслуживания с помощью Content-Encoding. */
-const CompressionPlugin = require("compression-webpack-plugin");
+/* сжатые gzip версии ресурсов для их обслуживания с помощью Content-Encoding. */
+// const CompressionPlugin = require("compression-webpack-plugin");
 
 
 
@@ -53,7 +53,7 @@ module.exports = merge(common, {        //объединяем настройк�
       filename: "styles/[name].[contenthash].css",
       chunkFilename: "[id].css",
     }),
-    new CompressionPlugin(),
+    // new CompressionPlugin(),
   ],
 
   /* настройка процесса оптимизации сборки */

@@ -4,6 +4,9 @@ const { merge } = require("webpack-merge");
 /* импортируем общую сборку webpack */
 const common = require("./webpack.common.js");
 
+/* эспериментальный плагин для включения быстрого обновления, используется в cra */
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+
 module.exports = merge(common, {      //объединяем настройки 'webpack.common.js' с этими
   //режим разработки
   mode: "development",
@@ -21,5 +24,6 @@ module.exports = merge(common, {      //объединяем настройки 
     port: 3000,                   //указывает клиентам использовать предоставленный порт
   },
   plugins: [
+    new ReactRefreshWebpackPlugin()
   ],
 });

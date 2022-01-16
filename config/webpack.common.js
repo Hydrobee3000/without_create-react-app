@@ -4,8 +4,6 @@ const paths = require('./paths')
 
 /* шаблон html */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-/* очистка сборки */
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 /* минификация css */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -15,19 +13,17 @@ module.exports = {
   entry: ['@babel/polyfill', paths.src + '/index.js'],
   /* куда файлы отправятся после объединения */
   output: {
-  /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
+    /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
     path: paths.build,
+    publicPath: "/",
     /* название для бандла */
     filename: '[name].bundle.js',
     /* Все ассеты будут складываться в dist/assets */
     assetModuleFilename: "images/[hash][ext]",
-
-    publicPath: "/",
   },
-
+  target: "web",
   /* настройка процесса сборки webpack */
   plugins: [
-    new CleanWebpackPlugin(), 
     new HtmlWebpackPlugin({
       template: paths.public + '/index.html', // файл-шаблон
     }),
@@ -63,9 +59,11 @@ module.exports = {
             options: { publicPath: '' },
           },
           'css-loader',
+          'postcss-loader',
           'sass-loader',
         ],
-        /* порядок справа налево: webpack сперва запускает sass-loader, который превращает scss в css; 
+        /* порядок справа налево: webpack сперва запускает sass-loader, который превращает scss в css;
+        затем postcss-loader, который добавляет префиксы,
         затем css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
       },
@@ -75,9 +73,11 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
+          'postcss-loader',
           'less-loader',
         ],
         /* порядок справа налево: webpack сперва запускает less-loader, который превращает less в css; 
+        затем postcss-loader, который добавляет префиксы,
         затем css-loader, который превращает файлы css в js,
         затем запускает MiniCssExtractPlugin.loader для минификации */
       },
