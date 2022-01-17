@@ -1,5 +1,6 @@
 {
     "parser": "babel-eslint", // Указывает парсер ESLint
+    // "parser": "@typescript-eslint/parser", //парсер typescript    *TypeScript config*
     "parserOptions": {     //настройки парсера
       "ecmaVersion": 2021, // Позволяет парсить современные функции ECMAScript.
       "sourceType": "module", // Позволяет использовать импорты
@@ -15,18 +16,25 @@
     /* Плагин разрешения модулей с поддержкой Webpack */
     "import/resolver": {
         "node": {
-          "extensions": [".js", ".jsx", ".json"]   //обслуживаемые разрешения 
+          /* обслуживаемые разрешения */
+          "extensions": [
+            ".js", ".jsx", ".json",
+            // ".ts", ".tsx"                                         *TypeScript config*
+            ]   
         }
       }
     },
     /* определение конфигурации  */
     "extends": [
       "eslint:recommended",             // Использует рекомендованные правила eslint
+      // "plugin:@typescript-eslint/recommended", // Использует рекомендованные правила для .ts из @typescript-eslint *TypeScript config*
       "plugin:react/recommended",       // Использует рекомендованные правила из @eslint-plugin-react
       "plugin:react-hooks/recommended"  // Использует рекомендованные правила для хуков из @eslint-plugin-react-hooks
     ],
     /* плагины */
     "plugins": [
+      /* */
+      // "@typescript-eslint",                                         *TypeScript config*
       /* Реагирует на определенные правила линтинга для eslint */ 
       "react", 
       /* Статическая проверка AST для правил доступности для элементов JSX. */ 
