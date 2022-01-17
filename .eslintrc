@@ -1,27 +1,38 @@
 {
-    "parser": "babel-eslint", // Specifies the ESLint parser
-    "parserOptions": {
-      "ecmaVersion": 2021, // Allows for the parsing of modern ECMAScript features
-      "sourceType": "module", // Allows for the use of imports
+    "parser": "babel-eslint", // Указывает парсер ESLint
+    "parserOptions": {     //настройки парсера
+      "ecmaVersion": 2021, // Позволяет парсить современные функции ECMAScript.
+      "sourceType": "module", // Позволяет использовать импорты
       "ecmaFeatures": {
-        "jsx": true // Allows for the parsing of JSX
+        "jsx": true   //Позволяет парсить JSX
       }
     },
+    /* настройки */
     "settings": {
       "react": {
-        "version": "detect" // Tells eslint-plugin-react to automatically detect the version of React to use
+        "version": "detect" // eslint-plugin-react автоматически определяет версию React для использования
       },
-      "import/resolver": {
+    /* Плагин разрешения модулей с поддержкой Webpack */
+    "import/resolver": {
         "node": {
-          "extensions": [".js", ".jsx", ".json"]
+          "extensions": [".js", ".jsx", ".json"]   //обслуживаемые разрешения 
         }
       }
     },
+    /* определение конфигурации  */
     "extends": [
-      "eslint:recommended",
-      "plugin:react/recommended", // Uses the recommended rules from @eslint-plugin-react
+      "eslint:recommended",             // Использует рекомендованные правила eslint
+      "plugin:react/recommended",       // Использует рекомендованные правила из @eslint-plugin-react
+      "plugin:react-hooks/recommended"  // Использует рекомендованные правила для хуков из @eslint-plugin-react-hooks
     ],
-    "plugins": ["react", "jsx-a11y"],
+    /* плагины */
+    "plugins": [
+      /* Реагирует на определенные правила линтинга для eslint */ 
+      "react", 
+      /* Статическая проверка AST для правил доступности для элементов JSX. */ 
+      "jsx-a11y"
+    ],
+    /* правила */
     "rules": {
       "semi": 0,
       "react/jsx-indent": ["error", 2],

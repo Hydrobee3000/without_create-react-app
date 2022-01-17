@@ -23,6 +23,7 @@ module.exports = merge(common, {      //объединяем настройки 
     hot: true,                    //включает функцию горячей замены модулей
     port: 3000,                   //указывает клиентам использовать предоставленный порт
   },
+  /* настройка процесса сборки webpack */
   plugins: [
     new ReactRefreshWebpackPlugin()
   ],
