@@ -1,4 +1,6 @@
 import * as React from 'react'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -12,8 +14,12 @@ const MainTable = () => {
   const dataTable = useSelector((state) => state.tableReducer.items.data)
   const loading = useSelector((state) => state.tableReducer.isFetching)
   if (loading) {
-    return <div style={{textAlign: 'center', marginTop: '20px'}}>Запросите данные и ожидайте..</div>
-  }
+    return (
+  <Box sx={{ display: 'flex', paddingLeft: '50%', paddingTop: '15%' }}>
+    <CircularProgress />
+  </Box>
+  )}
+
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>

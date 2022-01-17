@@ -6,7 +6,8 @@ const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /* минификация css */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+/* проверяет типизацию typeScript как отдельный процесс           TypeScript config */ 
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 /* анализировать размеры бандлов, для наглядности*/
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -33,8 +34,8 @@ module.exports = {
       template: paths.public + '/index.html', // файл-шаблон
     }),
     new MiniCssExtractPlugin(),
-    /* анализировать размеры бандлов, для наглядности*/
-    new BundleAnalyzerPlugin()
+    // new ForkTsCheckerWebpackPlugin(),                TypeScript config
+    new BundleAnalyzerPlugin(),
   ],
 
     /* разрешение определенных файлов */
@@ -42,7 +43,7 @@ module.exports = {
     /* позволяет при импорте не указывать расширение файлов */
     extensions: [
       '.js', '.jsx', 
-    // '.ts', '.tsx'  TypeScript config
+    // '.ts', '.tsx'               TypeScript config
   ],
   },
 

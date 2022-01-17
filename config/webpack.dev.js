@@ -23,20 +23,22 @@ module.exports = merge(common, {      //объединяем настройки 
     hot: true,                    //включает функцию горячей замены модулей
     port: 3000,                   //указывает клиентам использовать предоставленный порт
   },
-  /*  TypeScript config
+  /*                  TypeScript config
   module: {
     rules: [
       {
         test: /\.(ts)x?$/i,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: "ts-loader",
           options: {
             presets: [
               "@babel/preset-env",
               "@babel/preset-react",
               "@babel/preset-typescript",
             ],
+            // отключает проверку типов
+            transpileOnly: true
           },
         },
       },

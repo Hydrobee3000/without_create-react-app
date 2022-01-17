@@ -4,6 +4,7 @@ var MockAdapter = require('axios-mock-adapter')
 // var mock = new MockAdapter(axios)
 var mock = new MockAdapter(axios, { delayResponse: 1000 }) //задержка 1 секунда
 
+/* данные для наглядности, имитирующие приход с сервера с задержкой */
 mock.onGet('/data').reply(200, {
   data: [
     { name: 'Valorian', value: 567583643454, street: 'Lebovsky' },
