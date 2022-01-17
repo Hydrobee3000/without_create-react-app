@@ -35,6 +35,7 @@ module.exports = merge(common, {        //объединяем настройк�
   /* Директория, в которой будет
   размещаться итоговый бандл, папка dist в корне приложения */
     path: paths.build,
+    /* абсолютный путь */
     publicPath: '/',
   /* Очищает директорию dist перед обновлением бандла
   Свойство стало доступно с версии 5.20.0, до этого использовался
@@ -45,7 +46,7 @@ module.exports = merge(common, {        //объединяем настройк�
     filename: "js/[name].[contenthash].bundle.js"
   },
 
-  /* настройка процесса сборки webpack */
+  /* сторонние расширения */
   plugins: [
     // Extracts CSS into separate files
     // Note: style-loader is for development, MiniCssExtractPlugin is for production
@@ -58,6 +59,7 @@ module.exports = merge(common, {        //объединяем настройк�
 
   /* настройка процесса оптимизации сборки */
   optimization: {
+    /* разделение кода */
     splitChunks: {
       cacheGroups: {
         vendor: {
@@ -74,15 +76,45 @@ module.exports = merge(common, {        //объединяем настройк�
     /* средства для оптимизации(перечислены при импорте) */
     minimizer: [
       new TerserPlugin({
-    terserOptions: {
-        format: {
+        terserOptions: {
+          parse: {
+            // We want terser to parse ecma 8 code. However, we don't want it
+            // to apply any minification steps that turns valid ecma 5 code
+            // into invalid ecma 5 code. This is why the 'compress' and 'output'
+            // sections only apply transformations that are ecma 5 safe
+            // https://github.com/facebook/create-react-app/pull/4234
+            ecma: 8,
+          },
+          compress: {
+            ecma: 5,
+            warnings: false,
+            // Disabled because of an issue with Uglify breaking seemingly valid code:
+            // https://github.com/facebook/create-react-app/issues/2376
+            // Pending further investigation:
+            // https://github.com/mishoo/UglifyJS2/issues/2011
+            comparisons: false,
+            // Disabled because of an issue with Terser breaking valid code:
+            // https://github.com/facebook/create-react-app/issues/5250
+            // Pending further investigation:
+            // https://github.com/terser-js/terser/issues/120
+            inline: 2,
+          },
+          mangle: {
+            safari10: true,
+          },
+          // Added for profiling in devtools
+          keep_classnames: true,
+          keep_fnames: true,
+          output: {
+            ecma: 5,
             comments: false,
+            // Turned on because emoji and regex is not minified properly using default
+            // https://github.com/facebook/create-react-app/issues/2488
+            ascii_only: true,
+          },
         },
-    },
-    extractComments: false,
-    // enable parallel running
-    parallel: true,
-}),
+      }),
+ 
       new CssMinimizerPlugin(),
       new HtmlMinimizerPlugin(),
       new ImageMinimizerPlugin({

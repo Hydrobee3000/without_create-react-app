@@ -43,7 +43,7 @@ module.exports = merge(common, {      //объединяем настройки 
     ],
   },
   */
-  /* настройка процесса сборки webpack */
+  /* сторонние расширения */
   plugins: [
     new ReactRefreshWebpackPlugin()
   ],

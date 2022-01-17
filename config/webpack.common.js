@@ -7,6 +7,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 /* минификация css */
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+/* анализировать размеры бандлов, для наглядности*/
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
 
 /* входной файл и включние полифилла для старых браузеров */
@@ -15,19 +18,23 @@ module.exports = {
   output: {
     /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
     path: paths.build,
+    /* абсолютный путь */
     publicPath: "/",
     /* название для бандла */
     filename: '[name].bundle.js',
     /* Все ассеты будут складываться в dist/assets */
     assetModuleFilename: "images/[hash][ext]",
   },
+  /* среда в которой должен запускаться бандл */
   target: "web",
-  /* настройка процесса сборки webpack */
+  /* сторонние расширения */
   plugins: [
     new HtmlWebpackPlugin({
       template: paths.public + '/index.html', // файл-шаблон
     }),
     new MiniCssExtractPlugin(),
+    /* анализировать размеры бандлов, для наглядности*/
+    new BundleAnalyzerPlugin()
   ],
 
     /* разрешение определенных файлов */
