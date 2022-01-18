@@ -8,6 +8,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 /* проверяет типизацию typeScript как отдельный процесс           TypeScript config */ 
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
+const CopyWebpackPlugin = require("copy-webpack-plugin");
 /* анализировать размеры бандлов, для наглядности*/
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -32,6 +34,17 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: paths.public + '/index.html', // файл-шаблон
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: paths.src + "/assets",
+          to: "assets",
+          globOptions: {
+            ignore: ["*.DS_Store"],
+          },
+        },
+      ],
     }),
     new MiniCssExtractPlugin(),
     // new ForkTsCheckerWebpackPlugin(),                TypeScript config
