@@ -1,6 +1,7 @@
 export const SET_DATA = 'SET_DATA'
 export const FETCH_DATA = 'FETCH_DATA'
 
+/* начальный стейт */
 const defaultState = {
   items: [],
   isFetching: true,

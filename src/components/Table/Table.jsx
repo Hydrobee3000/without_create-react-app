@@ -1,6 +1,6 @@
 import * as React from 'react'
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress'
+import Box from '@mui/material/Box'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
@@ -11,15 +11,19 @@ import Paper from '@mui/material/Paper'
 import { useSelector } from 'react-redux'
 
 const MainTable = () => {
+  /* данные для таблицы из tableReducer */
   const dataTable = useSelector((state) => state.tableReducer.items.data)
+  /* происходит ли сейчас загрузка данных (boolean), значение поля isFetching */
   const loading = useSelector((state) => state.tableReducer.isFetching)
+  /* если происходит загрузка данных(loading === true), тогда отрисуем прелоадер */
   if (loading) {
     return (
-  <Box sx={{ display: 'flex', paddingLeft: '50%', paddingTop: '15%' }}>
-    <CircularProgress />
-  </Box>
-  )}
-
+      <Box sx={{ display: 'flex', paddingLeft: '50%', paddingTop: '15%' }}>
+        <CircularProgress />
+      </Box>
+    )
+  }
+  /* если все данные пришли и загрузка завершена(loading === false), тогда отрисуем разметку с соответсвующими данными */
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label='simple table'>
@@ -32,6 +36,7 @@ const MainTable = () => {
         </TableHead>
         <TableBody>
           {dataTable.map((row) => (
+            // мапим данные таблицы из стейта tableReducer, на каждую запись отрисовываем строку с тремя столбцами
             <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
               <TableCell component='th' scope='row'>
                 {row.name}

@@ -6,12 +6,14 @@ const fetchData = () => mockAPI.getData() //получения данных из
 
 /* воркер */
 function* fetchDataWorker() {
-  const data = yield call(fetchData) //возвращает данные из промиса
-  //аналог dispatch
+  /* возвращает данные из промиса, который придет при получении данных из mock api */
+  const data = yield call(fetchData) 
+  /* аналог dispatch, устанавливает пришедшие данные в стейт tableReducer, отправкой AC(action creator'а) в tableReducer */
   yield put(setData(data))
 }
 
 /* наблюдатель за воркером */
 export function* tableWatcher() {
+  /* при каждом изменении(вызове) FETCH_DATA, вызывает worker'а, который выполнит свою логику */
   yield takeEvery(FETCH_DATA, fetchDataWorker)
 }
