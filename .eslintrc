@@ -1,49 +1,62 @@
 {
-	// "parser": "@typescript-eslint/parser", //парсер typescript    *TypeScript config*
-	"parserOptions": {     //настройки парсера
-	  "ecmaVersion": 2021, // Позволяет парсить современные функции ECMAScript.
-	  "sourceType": "module", // Позволяет использовать импорты
-	  "ecmaFeatures": {
-		 "jsx": true   //Позволяет парсить JSX
-	  }
-	},
-	/* настройки */
-	"settings": {
-	  "react": {
-		 "version": "detect" // eslint-plugin-react автоматически определяет версию React для использования
-	  },
-	/* Плагин разрешения модулей с поддержкой Webpack */
-	"import/resolver": {
-		 "node": {
-			/* обслуживаемые разрешения */
-			"extensions": [
-			  ".js", ".jsx", ".json",
-			  // ".ts", ".tsx"                                         *TypeScript config*
-			  ]   
-		 }
-	  }
-	},
-	/* определение конфигурации  */
-	"extends": [
-	  "eslint:recommended",             // Использует рекомендованные правила eslint
-	  // "plugin:@typescript-eslint/recommended", // Использует рекомендованные правила для .ts из @typescript-eslint *TypeScript config*
-	  "plugin:react/recommended",       // Использует рекомендованные правила из @eslint-plugin-react
-	  "plugin:react-hooks/recommended"  // Использует рекомендованные правила для хуков из @eslint-plugin-react-hooks
-	],
-	/* плагины */
-	"plugins": [
-	  // "@typescript-eslint",                                         *TypeScript config*
-	  /* Реагирует на определенные правила линтинга для eslint */ 
-	  "react", 
-	  /* Статическая проверка AST для правил доступности для элементов JSX. */ 
-	  "jsx-a11y",
-	  /* правила хуков реакт */
-	  "react-hooks"
-	],
-	/* правила */
-	"rules": {
-	  "semi": 0,
-	  "prefer-template": "off",
+  // "parser": "@typescript-eslint/parser", //парсер typescript    *TypeScript config*
+  "parserOptions": {
+    //настройки парсера
+    "ecmaVersion": 2021, // Позволяет парсить современные функции ECMAScript.
+    "sourceType": "module", // Позволяет использовать импорты
+    "ecmaFeatures": {
+      "jsx": true //Позволяет парсить JSX
+    }
+  },
+  /* настройки */
+  "settings": {
+    "react": {
+      "version": "detect" // eslint-plugin-react автоматически определяет версию React для использования
+    },
+    /* Плагин разрешения модулей с поддержкой Webpack */
+    "import/resolver": {
+      "node": {
+        /* обслуживаемые разрешения */
+        "extensions": [
+          ".js",
+          ".jsx",
+          ".json"
+          // ".ts", ".tsx"                                         *TypeScript config*
+        ]
+      }
+    }
+  },
+  /* игнорировать */
+  "ignorePatterns": ["dist", "node_modules", "webpack.*", "config/paths.js"],
+  /* среда разработки */
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  /* определение конфигурации  */
+  "extends": [
+    "eslint:recommended", // Использует рекомендованные правила eslint
+    // "plugin:@typescript-eslint/recommended", // Использует рекомендованные правила для .ts из @typescript-eslint *TypeScript config*
+    "plugin:react/recommended", // Использует рекомендованные правила из @eslint-plugin-react
+    "plugin:react-hooks/recommended", // Использует рекомендованные правила для хуков из @eslint-plugin-react-hooks
+    "prettier" //использует prettier форматтер
+  ],
+  /* плагины */
+  "plugins": [
+    // "@typescript-eslint",                                         *TypeScript config*
+    /* Реагирует на определенные правила линтинга для eslint */
+    "react",
+    /* Статическая проверка AST для правил доступности для элементов JSX. */
+    "jsx-a11y",
+    /* правила хуков реакт */
+    "react-hooks",
+    /* использует prettier форматтер */
+    "prettier"
+  ],
+  /* правила */
+  "rules": {
+    "semi": 0,
+    "prefer-template": "off",
     "no-var": 1,
     "no-unused-vars": 1,
     "no-nested-ternary": 1,
@@ -52,54 +65,18 @@
     "import/prefer-default-export": 0,
     "arrow-body-style": 1,
     "import/no-extraneous-dependencies": ["off", { "devDependencies": false }],
-	  "react/jsx-indent": ["error", 2],
-	  "max-len": [2, 120, 2],
-	  "no-console": "warn",
-	  "comma-dangle": ["error", "never"],
-	  "react/prop-types": [2, { "ignore": ["history"] }],
-	  
-	  "jsx-a11y/label-has-associated-control": "off",
-	  "react/jsx-filename-extension": [1,
-		 { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
-	  ],
-	  "react/no-set-state": "off",
-	  "react-hooks/rules-of-hooks": "error",
-	  "react-hooks/exhaustive-deps": "warn",		
-	  "react/jsx-props-no-spreading": "off",
-	  "prefer-promise-reject-errors": "off",
-	  "camelcase": "off"
-	}
- }
-
-
-
-
-
-{
-
-  "ignorePatterns": ["dist", "node_modules", "webpack.*", "config/paths.js"],
-  "env": {
-    "browser": true,
-    "es6": true
-  },
-  "extends": ["eslint:recommended", "prettier"],
-  "parserOptions": {
-    "ecmaVersion": 2021,
-    "sourceType": "module"
-  },
-  "plugins": [
-    // "@typescript-eslint",    // *TypeScript config*
-
-    /* Реагирует на определенные правила линтинга для eslint */
-    "react",
-    /* Статическая проверка AST для правил доступности для элементов JSX. */
-    "jsx-a11y"
-  ],
-  "settings": {
-    "import/resolver": {
-      "webpack": {
-        "config": "config/webpack.common.js"
-      }
-    }
+    "react/jsx-indent": ["error", 2],
+    "max-len": [2, 120, 2],
+    "no-console": "warn",
+    "comma-dangle": ["error", "never"],
+    "react/prop-types": [2, { "ignore": ["history"] }],
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "react/no-set-state": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/jsx-props-no-spreading": "off",
+    "prefer-promise-reject-errors": "off",
+    "camelcase": "off"
   }
 }
