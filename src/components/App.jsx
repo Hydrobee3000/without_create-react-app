@@ -5,7 +5,7 @@ import Header from './Header/Header'
 
 const App = () => {
   return (
-    <Container maxWidth='sx' style={{ padding: '0' }}>   
+    <Container maxWidth="sx" style={{ padding: '0' }}>
       <Header />
       <MainTable />
     </Container>
