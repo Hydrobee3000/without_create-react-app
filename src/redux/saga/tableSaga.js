@@ -1,6 +1,6 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import { mockAPI } from '@/requests/api'
-import { FETCH_DATA, setData } from '@/redux/tableReducer'
+import { FETCH_DATA, setData } from '@/redux/reducers/tableReducer'
 
 const fetchData = () => mockAPI.getData() //получения данных из mock apis
 

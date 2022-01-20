@@ -1,7 +1,7 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
-import { tableWatcher } from '../saga/tableSaga'
-import tableReducer from './tableReducer'
+import { tableWatcher } from './saga/tableSaga'
+import tableReducer from './reducers/tableReducer'
 
 /* создание промежуточного уровня - саги */
 const sagaMiddleware = createSagaMiddleware()
@@ -14,5 +14,5 @@ const rootReducer = combineReducers({
 /* создание стора редакса с корневым редюсером и промежуточным уровнем */
 export const store = createStore(rootReducer, applyMiddleware(sagaMiddleware))
 
-/* запуск саги с наблюдателем */
+/* запускает саги */
 sagaMiddleware.run(tableWatcher)
