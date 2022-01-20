@@ -58,7 +58,7 @@ module.exports = {
     // new ForkTsCheckerWebpackPlugin(),                //TypeScript config
     /* Генерирует HTML-файл из шаблона */
     new HtmlWebpackPlugin({
-      favicon: paths.src + '/assets/favicon.png', //  иконка для браузера
+      favicon: paths.src + '/images/favicon.png', //  иконка для браузера
       template: paths.src + '/index.html', // шаблонный файл
     }),
     /* анализирует бандлы, для webpack */

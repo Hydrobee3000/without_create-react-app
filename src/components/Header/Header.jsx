@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-  /* хук из редакса для отправки изменений в стейте(в данном случае AC(Action Creator), за которым следит saga) */
+/* хук из редакса для отправки изменений в стейте(в данном случае AC(Action Creator), за которым следит saga) */
 import { useDispatch } from 'react-redux'
 /*AC, за которым следит saga и при его диспатче, запускает воркера,
  который получит данные с сервера(у нас mock api) и установит их в стейт в tableReducer*/
