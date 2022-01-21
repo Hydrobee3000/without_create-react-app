@@ -6,6 +6,10 @@ import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
+import Box from '@mui/material/Box'
+import Alert from '@mui/material/Alert'
+import Typography from '@mui/material/Typography'
+import Stack from '@mui/material/Stack'
 import { useSelector } from 'react-redux'
 import { Loader } from './../Loader/Loader'
 
@@ -13,12 +17,28 @@ const MainTable = () => {
   /* данные для таблицы из tableReducer */
   const dataTable = useSelector((state) => state.tableReducer.items.data)
   /* происходит ли сейчас загрузка данных (boolean), значение поля isFetching */
-  const loading = useSelector((state) => state.tableReducer.isFetching)
+  const loading = useSelector((state) => state.tableReducer.loading)
   /* если происходит загрузка данных(loading === true), тогда отрисуем прелоадер */
   if (loading) {
     return <Loader />
   }
-  /* если все данные пришли и загрузка завершена(loading === false), тогда отрисуем разметку с соответсвующими данными */
+  /* если все данные пришли и загрузка завершена(loading === false), тогда отрисуем дальнейшую разметку */
+
+  /* если данных нет */
+  if (!dataTable) {
+    return (
+      <Box
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          paddingTop: '5%',
+        }}
+      >
+        <Alert severity="info">Загрузите данные, нажав кнопку GET </Alert>
+      </Box>
+    )
+  }
+  /* если данные пришли отрисуем таблицу с ними */
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
