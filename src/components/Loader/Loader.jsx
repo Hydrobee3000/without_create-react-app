@@ -1,10 +1,11 @@
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
+import './Loader.scss'
 
 export const Loader = () => {
   return (
-    <Box sx={{ display: 'flex', justifyContent: 'center', paddingTop: '15%' }}>
-      <CircularProgress />
+    <Box className="container__preloader">
+      <CircularProgress className="preloader" />
     </Box>
   )
 }

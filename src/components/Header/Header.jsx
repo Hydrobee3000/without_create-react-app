@@ -9,18 +9,19 @@ import { useDispatch } from 'react-redux'
 import { fetchData } from '@/redux/reducers/tableReducer'
 /*AC, за которым следит saga и при его диспатче, запускает воркера,
  который получит данные с сервера(у нас mock api) и установит их в стейт в tableReducer*/
+import './Header.scss'
 
 const Header = () => {
   const dispatch = useDispatch()
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position='static'>
+      <AppBar className="header" position="static">
         <Toolbar>
-          <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
+          <Typography className="header__title" variant="h6" component="div">
             Table with some data
           </Typography>
-          <Button color='inherit' onClick={() => dispatch(fetchData())}>
+          <Button className="header__button" onClick={() => dispatch(fetchData())}>
             Get
           </Button>
         </Toolbar>

@@ -1,0 +1,12 @@
+$primary-color: #002f6c;
+$white-color: #fff;
+
+.container__preloader {
+  display: flex;
+  justify-content: center;
+  padding-top: 15%;
+}
+
+.preloader {
+  color: $primary-color;
+}

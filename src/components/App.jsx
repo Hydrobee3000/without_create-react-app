@@ -2,6 +2,7 @@ import React from 'react'
 import Container from '@mui/material/Container'
 import MainTable from './Table/Table'
 import Header from './Header/Header'
+import './App.scss'
 
 const App = () => {
   return (

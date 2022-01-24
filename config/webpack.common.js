@@ -79,16 +79,6 @@ module.exports = {
          в данном случае загрузчик babel-loader, который позволяет транспилировать файлы js с помощью babel и webpack */
         use: ['babel-loader'],
       },
-
-      {
-        /* обработка .less */
-        test: /\.less$/i,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'less-loader'],
-        /* порядок справа налево: webpack сперва запускает less-loader, который превращает less в css; 
-        затем postcss-loader, который добавляет префиксы,
-        затем css-loader, который превращает файлы css в js,
-        затем запускает MiniCssExtractPlugin.loader для минификации */
-      },
       /* копирует файлы изображений в папку сборки */
       {
         test: /\.(?:ico|gif|png|jpg|jpeg)$/i,

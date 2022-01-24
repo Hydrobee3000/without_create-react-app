@@ -48,6 +48,7 @@ module.exports = merge(common, {
         затем запускает MiniCssExtractPlugin.loader для минификации */
         ],
       },
+      /* обработка .less */
       {
         test: /\.(less)$/,
         use: [

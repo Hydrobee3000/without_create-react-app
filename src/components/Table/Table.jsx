@@ -8,8 +8,6 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
-import Typography from '@mui/material/Typography'
-import Stack from '@mui/material/Stack'
 import { useSelector } from 'react-redux'
 import { Loader } from './../Loader/Loader'
 

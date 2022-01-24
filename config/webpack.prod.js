@@ -57,7 +57,7 @@ module.exports = merge(common, {
         ],
       },
       {
-        test: /\.(less)$/,
+        test: /\.less$/i,
         use: [
           MiniCssExtractPlugin.loader,
           {
