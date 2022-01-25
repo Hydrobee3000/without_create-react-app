@@ -56,6 +56,10 @@ module.exports = merge(common, {
           'sass-loader',
         ],
       },
+      /* порядок справа налево: webpack сперва запускает sass-loader, который превращает scss в css;
+        затем postcss-loader,
+        затем css-loader, который превращает файлы css в js,
+        затем запускает MiniCssExtractPlugin.loader для минификации */
       {
         test: /\.less$/i,
         use: [
@@ -72,6 +76,10 @@ module.exports = merge(common, {
           'less-loader',
         ],
       },
+      /* порядок справа налево: webpack сперва запускает less-loader, который превращает less в css;
+        затем postcss-loader,
+        затем css-loader, который превращает файлы css в js,
+        затем запускает MiniCssExtractPlugin.loader для минификации */
     ],
   },
   /* сторонние расширения */

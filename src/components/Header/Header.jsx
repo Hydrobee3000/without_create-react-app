@@ -9,7 +9,7 @@ import { useDispatch } from 'react-redux'
 import { fetchData } from '@/redux/reducers/tableReducer'
 /*AC, за которым следит saga и при его диспатче, запускает воркера,
  который получит данные с сервера(у нас mock api) и установит их в стейт в tableReducer*/
-import './Header.scss'
+import './Header.module.scss'
 
 const Header = () => {
   const dispatch = useDispatch()

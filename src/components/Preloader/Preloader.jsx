@@ -1,12 +1,12 @@
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import './Loader.scss'
+import './Preloader.scss'
 
-export const Loader = () => {
+/* Показывает анимированный загрузчик */
+export const Preloader = () => {
   return (
     <Box className="container__preloader">
       <CircularProgress className="preloader" />
     </Box>
   )
 }
-// paddingLeft: '50%', paddingTop: '15%'

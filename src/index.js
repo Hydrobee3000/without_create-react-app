@@ -3,8 +3,9 @@ import { render } from 'react-dom'
 import App from './components/App'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
-import './styles/index.scss'
 import { StyledEngineProvider } from '@mui/material'
+import './styles/index.scss'
+import 'normalize.css' //сброс стилей
 
 render(
   /* Provider store - связывает реакт и редакс */

@@ -43,9 +43,9 @@ module.exports = merge(common, {
           { loader: 'postcss-loader', options: { sourceMap: true } },
           { loader: 'sass-loader', options: { sourceMap: true } },
           /* порядок справа налево: webpack сперва запускает sass-loader, который превращает scss в css;
-        затем postcss-loader, который добавляет префиксы,
+        затем postcss-loader,
         затем css-loader, который превращает файлы css в js,
-        затем запускает MiniCssExtractPlugin.loader для минификации */
+        затем запускает style-loader */
         ],
       },
       /* обработка .less */
@@ -62,7 +62,7 @@ module.exports = merge(common, {
           /* порядок справа налево: webpack сперва запускает less-loader, который превращает less в css; 
         затем postcss-loader, который добавляет префиксы,
         затем css-loader, который превращает файлы css в js,
-        затем запускает MiniCssExtractPlugin.loader для минификации */
+        затем запускает style-loader */
         ],
       },
     ],

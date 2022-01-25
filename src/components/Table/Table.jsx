@@ -9,7 +9,7 @@ import Paper from '@mui/material/Paper'
 import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 import { useSelector } from 'react-redux'
-import { Loader } from './../Loader/Loader'
+import { Preloader } from './../Preloader/Preloader'
 
 const MainTable = () => {
   /* данные для таблицы из tableReducer */
@@ -18,7 +18,7 @@ const MainTable = () => {
   const loading = useSelector((state) => state.tableReducer.loading)
   /* если происходит загрузка данных(loading === true), тогда отрисуем прелоадер */
   if (loading) {
-    return <Loader />
+    return <Preloader />
   }
   /* если все данные пришли и загрузка завершена(loading === false), тогда отрисуем дальнейшую разметку */
 
