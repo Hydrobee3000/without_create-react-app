@@ -20,6 +20,9 @@ const Header = () => {
   /* хук для отправки AC(action creator's) */
   const dispatch = useDispatch()
 
+  /* данные для таблицы из tableReducer */
+  const dataTable = useSelector((state) => state.tableReducer.items.data)
+
   /* происходит ли сейчас загрузка данных (boolean), значение поля isFetching */
   const loading = useSelector((state) => state.tableReducer.loading)
 
@@ -38,7 +41,10 @@ const Header = () => {
             /* если происходит загрузка(loading = true) - блокируем кнопку */
             disabled={loading}
           >
-            Get
+            {
+              /* если данных нет, надпись кнопки = "GET"; если данные уже имеются, надпись = "UPDATE" */
+              dataTable ? 'Update' : 'Get'
+            }
           </Button>
         </Toolbar>
       </AppBar>
