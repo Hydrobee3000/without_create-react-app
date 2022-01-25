@@ -1,12 +1,12 @@
 import CircularProgress from '@mui/material/CircularProgress'
 import Box from '@mui/material/Box'
-import './Preloader.scss'
+import styles from './Preloader.module.scss'
 
 /* Показывает анимированный загрузчик */
 export const Preloader = () => {
   return (
-    <Box className="container__preloader">
-      <CircularProgress className="preloader" />
+    <Box className={styles.container__preloader}>
+      <CircularProgress className={styles.preloader} />
     </Box>
   )
 }

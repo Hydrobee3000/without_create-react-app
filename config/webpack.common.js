@@ -62,7 +62,7 @@ module.exports = {
       template: paths.src + '/index.html', // шаблонный файл
     }),
     /* анализирует бандлы, для webpack */
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 
   /* определяет, как обрабатываются модули в проекте */

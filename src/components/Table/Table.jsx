@@ -10,6 +10,7 @@ import Box from '@mui/material/Box'
 import Alert from '@mui/material/Alert'
 import { useSelector } from 'react-redux'
 import { Preloader } from './../Preloader/Preloader'
+import styles from './Table.module.scss'
 
 const MainTable = () => {
   /* данные для таблицы из tableReducer */
@@ -25,13 +26,7 @@ const MainTable = () => {
   /* если данных нет */
   if (!dataTable) {
     return (
-      <Box
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          paddingTop: '5%',
-        }}
-      >
+      <Box>
         <Alert severity="info">Загрузите данные, нажав кнопку GET </Alert>
       </Box>
     )
