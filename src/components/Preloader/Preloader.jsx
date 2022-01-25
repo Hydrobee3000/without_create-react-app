@@ -1,5 +1,8 @@
+/* элемент загрузчика(крутилка) */
 import CircularProgress from '@mui/material/CircularProgress'
+/* блочный элемент */
 import Box from '@mui/material/Box'
+/* стили */
 import styles from './Preloader.module.scss'
 
 /* Показывает анимированный загрузчик */

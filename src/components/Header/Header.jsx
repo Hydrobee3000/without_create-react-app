@@ -1,14 +1,19 @@
-import * as React from 'react'
+/* элемент заголовка(хедера) */
 import AppBar from '@mui/material/AppBar'
+/* блочный элемент  */
 import Box from '@mui/material/Box'
+/* элемент, содержащий инструменты  */
 import Toolbar from '@mui/material/Toolbar'
+/* текст с заданными характеристиками  */
 import Typography from '@mui/material/Typography'
+/* элемент кнопки */
 import Button from '@mui/material/Button'
 /* хук из редакса для отправки изменений в стейт(в данном случае AC(Action Creator), за которым следит saga) */
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchData } from '@/redux/reducers/tableReducer'
 /*AC, за которым следит saga и при его диспатче, запускает воркера,
  который получит данные с сервера(у нас mock api) и установит их в стейт в tableReducer*/
+import { fetchData } from '@/redux/reducers/tableReducer'
+/* стили */
 import styles from './Header.module.scss'
 
 const Header = () => {
@@ -19,7 +24,7 @@ const Header = () => {
   const loading = useSelector((state) => state.tableReducer.loading)
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar className={styles.header} position="static">
         <Toolbar>
           <Typography className={styles.header__title} variant="h6" component="div">

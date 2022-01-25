@@ -1,15 +1,26 @@
-import * as React from 'react'
+/* элемент 'таблица' */
 import Table from '@mui/material/Table'
+/* элемент 'тело таблицы' */
 import TableBody from '@mui/material/TableBody'
+/* элемент 'ячейка таблицы' */
 import TableCell from '@mui/material/TableCell'
+/* элемент 'контейнер таблицы' */
 import TableContainer from '@mui/material/TableContainer'
+/* элемент 'заголовок(хедер) таблицы' */
 import TableHead from '@mui/material/TableHead'
+/* элемент 'строка таблицы' */
 import TableRow from '@mui/material/TableRow'
+/* элемент 'бумага' (фон) */
 import Paper from '@mui/material/Paper'
+/* блочный элемент */
 import Box from '@mui/material/Box'
+/* элемент 'внимание'(подсказка) */
 import Alert from '@mui/material/Alert'
+/* хук, позволяющий получить данные из стейта редакса */
 import { useSelector } from 'react-redux'
+/* компонент загрузчика */
 import { Preloader } from './../Preloader/Preloader'
+/* стили */
 import styles from './Table.module.scss'
 
 const MainTable = () => {
@@ -23,7 +34,7 @@ const MainTable = () => {
   }
   /* если все данные пришли и загрузка завершена(loading === false), тогда отрисуем дальнейшую разметку */
 
-  /* если данных нет */
+  /* если данных нет, показать подсказку*/
   if (!dataTable) {
     return (
       <Box>
@@ -34,9 +45,9 @@ const MainTable = () => {
   /* если данные пришли отрисуем таблицу с ними */
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
-          <TableRow style={{ backgroundColor: 'lightGrey' }}>
+          <TableRow className={styles.tableHead__row}>
             <TableCell>Name</TableCell>
             <TableCell>Value</TableCell>
             <TableCell>Street</TableCell>
@@ -45,7 +56,7 @@ const MainTable = () => {
         <TableBody>
           {dataTable.map((row) => (
             // мапим данные таблицы из стейта tableReducer, на каждую запись отрисовываем строку с тремя столбцами
-            <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableRow key={row.name}>
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
