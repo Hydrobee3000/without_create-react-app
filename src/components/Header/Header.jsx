@@ -31,8 +31,9 @@ const Header = () => {
       <AppBar className={styles.header} position="static">
         <Toolbar>
           <Typography className={styles.header__title} variant="h6" component="div">
-            Table with some data
+            Северсталь
           </Typography>
+          {/* кнопку вынести в table- компонент */}
           <Button
             className={styles.header__button}
             /* при клике на кнопку отправляем AC и сага, которая следит за изменением этого AC, запросит и получит данные, 
@@ -43,7 +44,7 @@ const Header = () => {
           >
             {
               /* если данных нет, надпись кнопки = "GET"; если данные уже имеются, надпись = "UPDATE" */
-              dataTable ? 'Update' : 'Get'
+              dataTable ? 'Обновить' : 'Загрузить'
             }
           </Button>
         </Toolbar>
