@@ -6,7 +6,7 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 import { mockAPI } from '@/requests/api'
 /* FETCH_DATA - action, за изменением которого следит сага;
    setData - функция для установки данных в стейт в tableReducer  */
-import { FETCH_DATA, setData } from '@/redux/reducers/tableReducer'
+import { FETCH_DATA, setData } from '@/store/reducers/tableReducer'
 /* функции 'спрятать загрузчик', 'показать загрузчик' */
 import { hideLoader, showLoader } from '../reducers/tableReducer'
 

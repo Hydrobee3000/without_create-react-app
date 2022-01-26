@@ -1,7 +1,7 @@
 import { render } from 'react-dom'
-import App from './components/App/App'
+import MainScreen from './components/MainScreen/MainScreen'
 import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { store } from './store/store'
 import { StyledEngineProvider } from '@mui/material'
 import './styles/index.scss'
 import 'normalize.css' //сброс стилей
@@ -11,7 +11,7 @@ render(
   /* StyledEngineProvider - позволяет переопределять стили MUI из CSS */
   <Provider store={store}>
     <StyledEngineProvider injectFirst>
-      <App />
+      <MainScreen />
     </StyledEngineProvider>
   </Provider>,
   document.querySelector('#root')

@@ -5,9 +5,9 @@ import Header from '../Header/Header'
 /* основная таблица */
 import MainTable from '../Table/Table'
 /* стили */
-import './App.scss'
+import './MainScreen.scss'
 
-const App = () => {
+const MainScreen = () => {
   return (
     <Box>
       <Header />
@@ -16,4 +16,4 @@ const App = () => {
   )
 }
 
-export default App
+export default MainScreen

@@ -12,7 +12,7 @@ import Button from '@mui/material/Button'
 import { useDispatch, useSelector } from 'react-redux'
 /*AC, за которым следит saga и при его диспатче, запускает воркера,
  который получит данные с сервера(у нас mock api) и установит их в стейт в tableReducer*/
-import { fetchData } from '@/redux/reducers/tableReducer'
+import { fetchData } from '@/store/reducers/tableReducer'
 /* стили */
 import styles from './Header.module.scss'
 

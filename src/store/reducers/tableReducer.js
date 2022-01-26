@@ -5,24 +5,24 @@ export const HIDE_LOADER = 'HIDE_LOADER'
 
 /* начальный стейт */
 const initialState = {
-  items: [],
-  loading: false,
+  items: [], //массив данных из mock api
+  loading: false, //происходит ли загрузка?
 }
 
 function tableReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_DATA: //set data in state
+    case SET_DATA: //устанавливает данные в стейт
       return {
         ...state,
         items: action.payload,
         loading: false,
       }
-    case SHOW_LOADER: //show loader
+    case SHOW_LOADER: //показывает загрузчик
       return {
         ...state,
         loading: true,
       }
-    case HIDE_LOADER: //hide loader
+    case HIDE_LOADER: //скрывает загрузчик
       return {
         ...state,
         loading: false,
