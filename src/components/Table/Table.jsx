@@ -38,7 +38,7 @@ const MainTable = () => {
   if (!dataTable) {
     return (
       <Box>
-        <Alert severity="info">Загрузите данные, нажав кнопку GET </Alert>
+        <Alert severity="info">Загрузите данные, нажав кнопку ЗАГРУЗИТЬ </Alert>
       </Box>
     )
   }
@@ -48,9 +48,9 @@ const MainTable = () => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow className={styles.tableHead__row}>
-            <TableCell>Name</TableCell>
-            <TableCell>Value</TableCell>
-            <TableCell>Street</TableCell>
+            <TableCell>Название</TableCell>
+            <TableCell>Значение</TableCell>
+            <TableCell>Улица</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

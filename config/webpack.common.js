@@ -45,7 +45,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         {
-          from: paths.public,
+          from: paths.src + '/assets',
           to: 'assets',
           globOptions: {
             ignore: ['*.DS_Store'],
@@ -58,7 +58,7 @@ module.exports = {
     // new ForkTsCheckerWebpackPlugin(),                //TypeScript config
     /* Генерирует HTML-файл из шаблона */
     new HtmlWebpackPlugin({
-      favicon: paths.src + '/images/favicon.png', //  иконка для браузера
+      favicon: paths.src + '/assets/images/favicon.png', //  иконка для браузера
       template: paths.src + '/index.html', // шаблонный файл
     }),
     /* анализирует бандлы, для webpack */
