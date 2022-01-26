@@ -1,19 +1,19 @@
 /* блочный элемент */
 import Box from '@mui/material/Box'
 /* заголовок */
+import Header from '../Header/Header'
 /* основная таблица */
+import MainTable from '../Table/Table'
 /* стили */
-import './App.scss'
-import Header from './components/Header/Header'
-import { AppRoutes } from './routes/AppRoutes'
+import './MainScreen.scss'
 
-const App = () => {
+const MainScreen = () => {
   return (
     <Box>
       <Header />
-      <AppRoutes />
+      <MainTable />
     </Box>
   )
 }
 
-export default App
+export default MainScreen
