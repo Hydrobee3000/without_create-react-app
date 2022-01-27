@@ -2,11 +2,6 @@ import MainPage from '../pages/MainPage'
 import TablePage from '../pages/TablePage'
 import { Routes, Route } from 'react-router-dom'
 
-// export const routes = [
-//   { path: '/', element: MainPage },
-//   { path: '/table', element: TablePage },
-// ]
-
 const AppRoutes = () => {
   return (
     <Routes>
