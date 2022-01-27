@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fetchData } from '@/store/reducers/tableReducer'
 /* стили */
 import styles from './Header.module.scss'
+import { Link } from 'react-router-dom'
 
 const Header = () => {
   /* хук для отправки AC(action creator's) */
@@ -31,22 +32,15 @@ const Header = () => {
       <AppBar className={styles.header} position="static">
         <Toolbar>
           <Typography className={styles.header__title} variant="h6" component="div">
-            Северсталь
+            <Link to="/" className={styles.header__link + ' ' + styles.link__home}>
+              Северсталь
+            </Link>
           </Typography>
-          {/* кнопку вынести в table- компонент */}
-          <Button
-            className={styles.header__button}
-            /* при клике на кнопку отправляем AC и сага, которая следит за изменением этого AC, запросит и получит данные, 
-            и запишет их в стейт  */
-            onClick={() => dispatch(fetchData())}
-            /* если происходит загрузка(loading = true) - блокируем кнопку */
-            disabled={loading}
-          >
-            {
-              /* если данных нет, надпись кнопки = "GET"; если данные уже имеются, надпись = "UPDATE" */
-              dataTable ? 'Обновить' : 'Загрузить'
-            }
-          </Button>
+          <Typography variant="body1" component="div">
+            <Link to="/table-data" className={styles.header__link + ' ' + styles.link__common}>
+              Таблица с данными
+            </Link>
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>

@@ -18,3 +18,16 @@ $white-color: #fff;
   color: $primary-color;
   background-color: darken($white-color, 10);
 }
+
+.header__link {
+  text-decoration: none;
+  color: white;
+}
+
+.link__home:hover {
+  color: red;
+}
+
+.link__common:hover {
+  color: lightgrey;
+}
