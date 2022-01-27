@@ -1,13 +1,10 @@
-import * as React from 'react'
-import Box from '@mui/material/Box'
-import Card from '@mui/material/Card'
-import CardActions from '@mui/material/CardActions'
-import CardContent from '@mui/material/CardContent'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-
-/* главная страница приложения */
+/* стили */
+import { Card, CardActions } from '@mui/material'
+import Box from '@mui/material/Box'
+import CardContent from '@mui/material/CardContent'
 
 /* Данные новостей для карточек на главной странице */
 // перемести в стор!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -51,10 +48,10 @@ const newsData = [
   },
 ]
 
-const MainPage = () => {
+const NewsCards = () => {
+  /* На каждую запись новости - создается карточка с заголовком, описанием и ссылкой на новость */
   return (
     <Box style={{ display: 'flex', flexWrap: 'wrap' }}>
-      {/* На каждую запись новости - создается карточка с заголовком, описанием и ссылкой на новость */}
       {newsData.map((card) => (
         <Card sx={{ margin: '1em', maxWidth: '400px', display: 'flex', flexDirection: 'column' }}>
           <CardContent style={{ textAlign: 'center', marginTop: 'auto' }}>
@@ -74,4 +71,4 @@ const MainPage = () => {
   )
 }
 
-export default MainPage
+export default NewsCards
