@@ -1,16 +1,16 @@
-/* блочный элемент */
-import Box from '@mui/material/Box'
-/* заголовок */
-/* основная таблица */
-/* стили */
-import './App.scss'
-import Header from './components/Header/Header'
-import { AppRoutes } from './routes/AppRoutes'
+import Box from '@mui/material/Box' //блочный элемент
+import Header from './components/Header/Header' //шапка сайта
+import AppRoutes from './routes/AppRoutes' //роуты приложения
+import './App.scss' //стили
+
+/* главный компонент, содержащий всю UI составляющую приложения */
 
 const App = () => {
   return (
     <Box>
+      {/* заголовок */}
       <Header />
+      {/* компонент, в котором указаны роуты приложения */}
       <AppRoutes />
     </Box>
   )

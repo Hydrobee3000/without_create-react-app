@@ -1,7 +1,6 @@
 export var axios = require('axios')
 var MockAdapter = require('axios-mock-adapter')
 
-// var mock = new MockAdapter(axios)
 var mock = new MockAdapter(axios, { delayResponse: 1000 }) //задержка 1 секунда
 
 /* данные для наглядности, имитирующие приход с сервера с задержкой */

@@ -1,9 +1,11 @@
-import Header from '../components/Header/Header'
+/* главная страница приложения */
 
-export const MainPage = () => {
+const MainPage = () => {
   return (
     <>
       <p> MainPage HERE</p>
     </>
   )
 }
+
+export default MainPage

@@ -1,6 +1,4 @@
-import Header from '../components/Header/Header'
-import { Box } from '@mui/material'
-import { MainPage } from '../pages/MainPage'
+import MainPage from '../pages/MainPage'
 import TablePage from '../pages/TablePage'
 import { Routes, Route } from 'react-router-dom'
 
@@ -9,7 +7,7 @@ import { Routes, Route } from 'react-router-dom'
 //   { path: '/table', element: TablePage },
 // ]
 
-export const AppRoutes = () => {
+const AppRoutes = () => {
   return (
     <Routes>
       {/* если путь "/" (главная страница) или " * " (любой не найденный путь), тогда отобразит главную страницу */}
@@ -23,3 +21,5 @@ export const AppRoutes = () => {
 // <MainPage />
 // <TablePage />
 // </Box>
+
+export default AppRoutes
