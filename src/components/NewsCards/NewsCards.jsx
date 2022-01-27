@@ -1,11 +1,11 @@
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
-/* стили */
-import styles from './NewsCards.module.scss'
 import { Card, CardActions } from '@mui/material'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
+/* стили */
+import styles from './NewsCards.module.scss'
 
 /* Данные новостей для карточек на главной странице */
 // перемести в стор!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -54,7 +54,7 @@ const NewsCards = () => {
   return (
     <Box style={{ display: 'flex', flexWrap: 'wrap' }}>
       {newsData.map((card) => (
-        <Card sx={{ margin: '1em', maxWidth: '400px', display: 'flex', flexDirection: 'column' }}>
+        <Card s sx={{ margin: '1em', maxWidth: '400px', display: 'flex', flexDirection: 'column' }}>
           <CardContent style={{ textAlign: 'center', marginTop: 'auto' }}>
             <Typography variant="h6">{card.title}</Typography>
             <Typography variant="body2" color="text.secondary" style={{ marginTop: '1em' }}>

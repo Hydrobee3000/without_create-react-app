@@ -2,6 +2,7 @@ import HomePage from '../pages/HomePage'
 import TablePage from '../pages/TablePage'
 import { Routes, Route } from 'react-router-dom'
 
+/* пути приложения */
 const AppRoutes = () => {
   return (
     <Routes>
@@ -11,10 +12,5 @@ const AppRoutes = () => {
     </Routes>
   )
 }
-
-// <Box>
-// <MainPage />
-// <TablePage />
-// </Box>
 
 export default AppRoutes

@@ -16,9 +16,10 @@ import Paper from '@mui/material/Paper'
 import { useSelector } from 'react-redux'
 /* компонент загрузчика */
 import { Preloader } from './../Preloader/Preloader'
+/* подсказка о загрузке страницы с кнопкой 'загрузить' */
+import LoadTablePrompt from './LoadTablePrompt/LoadTablePrompt'
 /* стили */
 import styles from './Table.module.scss'
-import LoadTablePrompt from './LoadTablePrompt/LoadTablePrompt'
 
 const MainTable = () => {
   /* данные для таблицы из tableReducer */
