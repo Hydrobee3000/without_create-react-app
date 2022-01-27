@@ -1,13 +1,5 @@
-.tableHead__row {
-  background-color: lightGrey;
-}
-
-.alert__container {
-  display: 'flex';
-  justify-content: 'center';
-  padding-top: '5%';
-}
+$base-grey: #909090;
 
 .tableHead__row {
-  background-color: 'lightGrey';
+  background-color: $base-grey;
 }

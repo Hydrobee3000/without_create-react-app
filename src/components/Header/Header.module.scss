@@ -1,33 +1,25 @@
-$primary-color: #002f6c;
-$white-color: #fff;
+$base-blue: #002f6c;
+$base-white: #ffffff;
+$base-red: #ff0000;
+$base-grey: #909090;
 
 .header {
-  background-color: $primary-color;
+  background-color: $base-blue;
 }
 
 .header__title {
   flex-grow: 1;
 }
 
-.header__button {
-  color: $primary-color;
-  background-color: $white-color;
-}
-
-.header__button:hover {
-  color: $primary-color;
-  background-color: darken($white-color, 10);
-}
-
 .header__link {
   text-decoration: none;
-  color: white;
+  color: $base-white;
 }
 
 .link__home:hover {
-  color: red;
+  color: $base-red;
 }
 
 .link__common:hover {
-  color: lightgrey;
+  color: $base-grey;
 }

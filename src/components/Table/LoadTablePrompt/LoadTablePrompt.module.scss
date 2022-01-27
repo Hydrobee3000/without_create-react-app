@@ -1,0 +1,12 @@
+$base-blue: #002f6c;
+$base-white: #ffffff;
+$base-red: #ff0000;
+$base-grey: #909090;
+
+.prompt__button {
+  background-color: $base-blue;
+
+  &:hover {
+    background-color: lighten($base-blue, 10);
+  }
+}

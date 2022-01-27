@@ -2,6 +2,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 /* стили */
+import styles from './NewsCards.module.scss'
 import { Card, CardActions } from '@mui/material'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
@@ -62,7 +63,9 @@ const NewsCards = () => {
           </CardContent>
           <CardActions style={{ marginTop: 'auto' }}>
             <Link href={card.link} underline="none">
-              <Button size="small">Подробнее</Button>
+              <Button className={styles.card__button} variant="outlined" size="small">
+                Подробнее
+              </Button>
             </Link>
           </CardActions>
         </Card>
