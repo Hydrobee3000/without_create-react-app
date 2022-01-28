@@ -33,7 +33,7 @@ const Header = () => {
         <Toolbar>
           <Typography className={styles.header__title} variant="h6" component="div">
             <Link to="/" className={styles.header__link + ' ' + styles.link__home}>
-              Северсталь
+              Главная
             </Link>
           </Typography>
           <Typography variant="body1" component="div">

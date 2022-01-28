@@ -6,11 +6,11 @@ var mock = new MockAdapter(axios, { delayResponse: 1000 }) //задержка 1 
 /* данные для наглядности, имитирующие приход с сервера с задержкой */
 mock.onGet('/data').reply(200, {
   data: [
-    { name: 'Valorian', value: 567583643454, street: 'Lebovsky' },
-    { name: 'Gregory', value: 67865553434, street: 'Chuikovsky' },
-    { name: 'Winter', value: 654765865426, street: 'Vaichovsky' },
-    { name: 'Victor', value: 5476586564326, street: 'Mayakovsky' },
-    { name: 'Andy', value: 2657676545458, street: 'Dobrovolsky' },
+    { name: 'Валерия', value: 5675836, street: 'Ленина' },
+    { name: 'Григорий', value: 678655, street: 'Тюленина' },
+    { name: 'Виктор', value: 6547658, street: 'Каренина' },
+    { name: 'Василий', value: 54765865, street: 'Маяковского' },
+    { name: 'Андрей', value: 265767654, street: 'Белозерова' },
   ],
 })
 

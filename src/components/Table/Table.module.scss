@@ -1,5 +1,5 @@
 $base-grey: #909090;
 
 .tableHead__row {
-  background-color: $base-grey;
+  background-color: lighten($base-grey, 20);
 }

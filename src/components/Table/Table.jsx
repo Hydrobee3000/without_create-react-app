@@ -42,7 +42,7 @@ const MainTable = () => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow className={styles.tableHead__row}>
-            <TableCell>Название</TableCell>
+            <TableCell>Имя</TableCell>
             <TableCell>Значение</TableCell>
             <TableCell>Улица</TableCell>
           </TableRow>

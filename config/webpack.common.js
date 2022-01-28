@@ -8,8 +8,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* анализировать размеры бандлов, для наглядности*/
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-/* Удаляет/очищает папки сборки и неиспользуемые активы при новой сборке*/
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 /* копирует файлы в папку назначения */
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 /* проверяет типизацию typeScript как отдельный процесс */
@@ -24,7 +22,9 @@ module.exports = {
     /* имя создаваемого каталога, в котором будут храниться все связанные файлы */
     path: paths.build,
     /* название для бандла */
-    filename: '[name].bundle.js',
+    filename: 'js/[name].bundle.js',
+    /* названия для пакетов с разделением кода */
+    chunkFilename: 'js/[name].bundle.js',
     /* абсолютный путь */
     publicPath: '/',
   },
@@ -34,13 +34,6 @@ module.exports = {
 
   /* сторонние расширения */
   plugins: [
-    /* разделяет css на разные файлы */
-    new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
-    }),
-    /* Удаляет/очищает папки сборки и неиспользуемые активы при новой сборке*/
-    new CleanWebpackPlugin(),
     /* копирует файлы в папку назначения */
     new CopyWebpackPlugin({
       patterns: [
@@ -110,6 +103,48 @@ module.exports = {
     ],
   },
 
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // на проде этот кусок кода уже есть, это для режима разработки только, чтобы увидеть lazy loading
+
+  optimization: {
+    /* если minimize = true, тогда сработает всё внутри minimizer */
+    minimize: false,
+
+    /* настройки разделения кода в отдельные файлы */
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
+
+    /* Как только сборка выводит несколько фрагментов, опция гарантирует, 
+    что они совместно используют среду выполнения webpack, вместо того, чтобы иметь свои собственные. 
+    Это также помогает при долгосрочном кэшировании, так как фрагменты будут
+    меняться при изменении фактического кода, а не времени выполнения webpack.
+    */
+    runtimeChunk: {
+      /* имя для блока среды выполнения */
+      name: 'runtime',
+    },
+  },
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   /* эти параметры изменяют способ разрешения модулей */
   resolve: {
     modules: [paths.src, 'node_modules'],
@@ -128,4 +163,5 @@ module.exports = {
       assets: paths.public,
     },
   },
+  /* настройка процесса оптимизации сборки */
 }

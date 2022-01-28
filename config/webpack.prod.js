@@ -32,7 +32,7 @@ module.exports = merge(common, {
     /* Очищает директорию dist перед обновлением бандла
   Свойство стало доступно с версии 5.20.0, до этого использовался
   CleanWebpackPlugin */
-    // clean: true,
+    clean: true,
   },
   /* определиет, как обрабатываются модули в проекте */
   module: {
@@ -82,9 +82,10 @@ module.exports = merge(common, {
   },
   /* сторонние расширения */
   plugins: [
+    /* извлекает CSS в отдельные файлы */
     new MiniCssExtractPlugin({
       filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
+      chunkFilename: 'styles/[id].css',
     }),
     new TerserPlugin({
       terserOptions: {
@@ -125,11 +126,6 @@ module.exports = merge(common, {
         },
       },
     }),
-    /* извлекает CSS в отдельные файлы */
-    new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
-    }),
   ],
   /* настройка процесса оптимизации сборки */
   optimization: {
@@ -137,6 +133,29 @@ module.exports = merge(common, {
     minimize: true,
     /* средства для оптимизации(перечислены при импорте) */
     minimizer: [new CssMinimizerPlugin(), '...'],
+
+    /* настройки разделения кода в отдельные файлы */
+    splitChunks: {
+      chunks: 'all',
+      minSize: 20000,
+      minRemainingSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 30,
+      maxInitialRequests: 30,
+      enforceSizeThreshold: 50000,
+      cacheGroups: {
+        defaultVendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10,
+          reuseExistingChunk: true,
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true,
+        },
+      },
+    },
 
     /* Как только сборка выводит несколько фрагментов, опция гарантирует, 
     что они совместно используют среду выполнения webpack, вместо того, чтобы иметь свои собственные. 
