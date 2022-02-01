@@ -1,8 +1,10 @@
 // не загружать "react-refresh/babel" в production сборке
 const plugins = []
 /* массив плагинов, который используется в настройке plugins
-если режим НЕ production, тогда в настройке plugins появится массив плагинов(в котором будет плагин: react-refresh и transform runtime) */
-if (process.env.NODE_ENV !== 'production') {
+если режим НЕ test(иначе тесты ломаются) и НЕ production, 
+тогда в настройке plugins появится массив плагинов(в котором будет плагин: react-refresh и transform runtime) */
+
+if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   /* экспериментальный плагин Webpack для включения «быстрого обновления» */
   plugins.push('react-refresh/babel')
   /* Плагин, который позволяет повторно использовать внедренный вспомогательный код Babel для экономии кода */
