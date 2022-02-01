@@ -1,5 +1,4 @@
-$base-blue: #002f6c;
-$base-white: #fff;
+@import '@/styles/variables.scss';
 
 .container__preloader {
   display: flex;

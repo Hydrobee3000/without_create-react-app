@@ -71,7 +71,6 @@ const NewsCards = () => {
             >
               {card.description}
             </Typography>
-            <p className={styles.text}></p>
           </CardContent>
           <CardActions className={styles.card__actions}>
             <Link className={styles.actions__link} href={card.link}>

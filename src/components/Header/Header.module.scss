@@ -1,7 +1,4 @@
-$base-blue: #002f6c;
-$base-white: #ffffff;
-$base-red: #ff0000;
-$base-grey: #909090;
+@import '@/styles/variables.scss';
 
 .header {
   background-color: $base-blue;

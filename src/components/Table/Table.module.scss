@@ -1,4 +1,4 @@
-$base-grey: #909090;
+@import '@/styles/variables.scss';
 
 .tableHead__row {
   background-color: lighten($base-grey, 20);

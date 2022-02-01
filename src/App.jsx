@@ -1,7 +1,6 @@
 import Box from '@mui/material/Box' //блочный элемент
 import Header from './components/Header/Header' //шапка сайта
 import AppRoutes from './routes/AppRoutes' //роуты приложения
-import './App.scss' //стили
 
 /* главный компонент, содержащий всю UI составляющую приложения */
 
