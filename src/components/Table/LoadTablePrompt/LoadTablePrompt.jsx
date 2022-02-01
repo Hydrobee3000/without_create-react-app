@@ -28,7 +28,7 @@ const LoadTablePrompt = () => {
       <Box>
         <Alert severity="info">Загрузите данные, нажав кнопку ЗАГРУЗИТЬ</Alert>
       </Box>
-      <Box style={{ display: 'flex', justifyContent: 'center', marginTop: '20rem' }}>
+      <Box className={styles.container__prompt}>
         <Button
           className={styles.prompt__button}
           /* при клике на кнопку отправляем AC и сага, которая следит за изменением этого AC, запросит и получит данные, 

@@ -5,21 +5,20 @@ $base-grey: #909090;
 
 .header {
   background-color: $base-blue;
-}
 
-.header__title {
-  flex-grow: 1;
-}
+  .header__title {
+    flex-grow: 1;
+  }
 
-.header__link {
-  text-decoration: none;
-  color: $base-white;
-}
+  .header__link {
+    text-decoration: none;
+    color: $base-white;
+  }
 
-.link__home:hover {
-  color: $base-red;
-}
-
-.link__common:hover {
-  color: $base-grey;
+  .link__home:hover {
+    color: $base-red;
+  }
+  .link__common:hover {
+    color: $base-grey;
+  }
 }

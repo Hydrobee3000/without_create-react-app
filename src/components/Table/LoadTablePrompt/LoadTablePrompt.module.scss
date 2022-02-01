@@ -3,10 +3,16 @@ $base-white: #ffffff;
 $base-red: #ff0000;
 $base-grey: #909090;
 
-.prompt__button {
-  background-color: $base-blue;
+.container__prompt {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rem;
 
-  &:hover {
-    background-color: lighten($base-blue, 10);
+  .prompt__button {
+    background-color: $base-blue;
+
+    &:hover {
+      background-color: lighten($base-blue, 10);
+    }
   }
 }
