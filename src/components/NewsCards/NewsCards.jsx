@@ -59,22 +59,23 @@ const newsData = [
 const NewsCards = () => {
   /* На каждую запись новости - создается карточка с заголовком, описанием и ссылкой на новость */
   return (
-    <Box style={{ display: 'flex', flexWrap: 'wrap' }}>
+    <Box className={styles.card__container}>
       {newsData.map((card) => (
-        <Card
-          key={card.id}
-          sx={{ margin: '1em', maxWidth: '400px', display: 'flex', flexDirection: 'column' }}
-        >
-          <CardContent style={{ textAlign: 'center', marginTop: 'auto' }}>
+        <Card className={styles.card} key={card.id}>
+          <CardContent className={styles.card__content}>
             <Typography variant="h6">{card.title}</Typography>
-            <Typography variant="body2" color="text.secondary" style={{ marginTop: '1em' }}>
+            <Typography
+              className={styles.content__description}
+              variant="body2"
+              color="text.secondary"
+            >
               {card.description}
             </Typography>
             <p className={styles.text}></p>
           </CardContent>
-          <CardActions style={{ marginTop: 'auto' }}>
-            <Link href={card.link} underline="none">
-              <Button className={styles.card__button} variant="outlined" size="small">
+          <CardActions className={styles.card__actions}>
+            <Link className={styles.actions__link} href={card.link}>
+              <Button className={styles.actions__button} variant="outlined" size="small">
                 Подробнее
               </Button>
             </Link>

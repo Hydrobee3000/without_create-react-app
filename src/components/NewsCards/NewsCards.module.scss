@@ -3,8 +3,37 @@ $base-white: #ffffff;
 $base-red: #ff0000;
 $base-grey: #909090;
 
-.card__button {
-  color: $base-blue;
+.card__container {
+  display: flex;
+  flex-wrap: wrap;
+
+  .card {
+    margin: 1em;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    .card__content {
+      text-align: center;
+      margin-top: auto;
+
+      .content__description {
+        margin-top: 1em;
+      }
+    }
+
+    .card__actions {
+      margin-top: auto;
+
+      .actions__link {
+        text-decoration: none;
+      }
+      .actions__button {
+        color: $base-blue;
+        border-color: $base-blue;
+      }
+    }
+  }
 }
 
 .text {
