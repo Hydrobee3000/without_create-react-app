@@ -4,8 +4,6 @@ const paths = require('./paths')
 
 /* шаблон html */
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-/* разделяет css на разные файлы */
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 /* анализировать размеры бандлов, для наглядности*/
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
 /* копирует файлы в папку назначения */

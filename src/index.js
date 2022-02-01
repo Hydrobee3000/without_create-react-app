@@ -8,15 +8,15 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 
 render(
-  /* Provider store - связывает реакт и редакс */
-  /* StyledEngineProvider - позволяет переопределять стили MUI из CSS */
+  /* Provider store - связывает react и redux */
   /* BrowserRouter - постраничная навигация в браузере */
+  /* StyledEngineProvider - позволяет переопределять стили MUI из CSS */
   <Provider store={store}>
-    <StyledEngineProvider injectFirst>
-      <BrowserRouter>
+    <BrowserRouter>
+      <StyledEngineProvider injectFirst>
         <App />
-      </BrowserRouter>
-    </StyledEngineProvider>
+      </StyledEngineProvider>
+    </BrowserRouter>
   </Provider>,
   document.querySelector('#root')
 )
