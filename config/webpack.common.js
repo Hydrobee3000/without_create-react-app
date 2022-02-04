@@ -109,6 +109,7 @@ module.exports = {
       '.js',
       '.jsx',
       '.json',
+      '.scss',
       // '.ts', '.tsx'            //TypeScript config
     ],
     /*  создает псевдонимы для import или require определенных модулей.  */

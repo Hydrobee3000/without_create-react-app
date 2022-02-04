@@ -19,8 +19,6 @@ const LoadTablePrompt = () => {
 
   /* происходит ли сейчас загрузка данных (boolean), значение поля loading */
   const loading = useSelector((state) => state.tableReducer.loading)
-  /* данные для таблицы из tableReducer */
-  const dataTable = useSelector((state) => state.tableReducer.items.data)
 
   /* если данных нет, показать подсказку*/
   return (
