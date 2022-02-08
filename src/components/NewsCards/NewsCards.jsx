@@ -8,8 +8,7 @@ import CardContent from '@mui/material/CardContent'
 import styles from './NewsCards.module.scss'
 
 /* Данные новостей для карточек на главной странице */
-// перемести в стор!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const newsData = [
+export const newsData = [
   {
     id: 1,
     title: 'Вебинар',
@@ -59,7 +58,7 @@ const newsData = [
 const NewsCards = () => {
   /* На каждую запись новости - создается карточка с заголовком, описанием и ссылкой на новость */
   return (
-    <Box className={styles.card__container}>
+    <Box className={styles.cards__container} data-testid="cards__container">
       {newsData.map((card) => (
         <Card className={styles.card} key={card.id}>
           <CardContent className={styles.card__content}>

@@ -16,16 +16,16 @@ const Header = () => {
     <Box>
       <AppBar className={styles.header} position="static">
         <Toolbar>
-          <NavLink to="/" className={styles.header__link + ' ' + styles.link__home}>
-            <Typography className={styles.header__title} variant="h6" component="div">
+          <Typography className={styles.header__title} variant="h6" component="div">
+            <NavLink to="/" className={styles.header__link + ' ' + styles.link__home}>
               Главная
-            </Typography>
-          </NavLink>
-          <NavLink to="/table-data" className={styles.header__link + ' ' + styles.link__common}>
-            <Typography variant="body1" component="div">
+            </NavLink>
+          </Typography>
+          <Typography variant="body1" component="div">
+            <NavLink to="/table-data" className={styles.header__link + ' ' + styles.link__common}>
               Таблица с данными
-            </Typography>
-          </NavLink>
+            </NavLink>
+          </Typography>
         </Toolbar>
       </AppBar>
     </Box>

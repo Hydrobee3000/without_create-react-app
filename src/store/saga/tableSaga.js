@@ -3,7 +3,7 @@
    takeEvery(эффект следит за каждым изменением бесконечно)*/
 import { call, put, takeEvery } from 'redux-saga/effects'
 /* мок апи для получения данных из имитации сервера */
-import { mockAPI } from '@/requests/api'
+import { mockAPI } from '../../requests/api'
 /* FETCH_DATA - action, за изменением которого следит сага;
    setData - функция для установки данных в стейт в tableReducer  */
 import { FETCH_DATA, setData } from '@/store/reducers/tableReducer'
