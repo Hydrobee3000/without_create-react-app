@@ -12,9 +12,18 @@
     color: $base-white;
   }
 
+  .link__home_active {
+    color: $base-red;
+  }
+
   .link__home:hover {
     color: $base-red;
   }
+
+  .link__common_active {
+    color: $base-grey;
+  }
+
   .link__common:hover {
     color: $base-grey;
   }

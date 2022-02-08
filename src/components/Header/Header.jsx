@@ -17,12 +17,27 @@ const Header = () => {
       <AppBar className={styles.header} position="static">
         <Toolbar>
           <Typography className={styles.header__title} variant="h6" component="div">
-            <NavLink to="/" className={styles.header__link + ' ' + styles.link__home}>
+            <NavLink
+              end
+              to="/"
+              className={({ isActive }) =>
+                `${isActive ? styles.link__home_active : undefined} ${styles.header__link} ${
+                  styles.link__home
+                }`
+              }
+            >
               Главная
             </NavLink>
           </Typography>
           <Typography variant="body1" component="div">
-            <NavLink to="/table-data" className={styles.header__link + ' ' + styles.link__common}>
+            <NavLink
+              to="/table-data"
+              className={({ isActive }) =>
+                `${isActive ? styles.link__common_active : undefined} ${styles.header__link} ${
+                  styles.link__common
+                }`
+              }
+            >
               Таблица с данными
             </NavLink>
           </Typography>
