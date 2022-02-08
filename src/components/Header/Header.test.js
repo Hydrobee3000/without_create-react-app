@@ -12,7 +12,7 @@ const HeaderWithRouter = () => {
   const history = createBrowserHistory()
 
   return (
-    <BrowserRouter history={history}>
+    <BrowserRouter location={history.location} navigator={history}>
       <Header />
       <Routes>
         <Route path={'/'} element={<HomePage />} />
@@ -36,26 +36,25 @@ describe('проверка тестов в Header', () => {
 
     expect(tableLinkEl).toBeInTheDocument()
   })
-  test('Переход по ссылке на другую страницу работает корректно', () => {
+  test('Переход по ссылке на домашнюю(главную) страницу работает корректно', () => {
     render(<HeaderWithRouter />)
+
     const homeLinkEl = screen.getByText(/Главная/i)
     expect(homeLinkEl).toBeInTheDocument()
+
     userEvent.click(homeLinkEl)
+
+    expect(location.pathname).toBe('/')
 
     const cardsContainer = screen.getByTestId('cards__container')
     expect(cardsContainer).toBeInTheDocument()
   })
+  test('Переход по ссылке на страницу с таблицей работает корректно', () => {
+    render(<HeaderWithRouter />)
+
+    const tableLinkEl = screen.getByText(/Таблица с данными/i)
+    userEvent.click(tableLinkEl)
+
+    expect(location.pathname).toBe('/table-data')
+  })
 })
-
-/*
-  // expect(history.location.pathname).toBe('/table-data')
-
-  // history.push('/')
-  // expect(history.location.pathname).toBe('/')
-
-  //   expect(screen.getByText(/table page/i)).toBeInTheDocument()
-
-  // fireEvent.click(tableLinkEl)
-  // expect(history.location.pathname).toBe('/table-data')
-// })
-*/
