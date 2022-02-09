@@ -34,8 +34,8 @@ function tableReducer(state = initialState, action) {
 }
 
 export const setData = (data) => ({ type: SET_DATA, payload: data }) //устанавливает данные в стейт
-export const fetchData = () => ({ type: FETCH_DATA }) // Action creator для отслеживания сагой
-export const showLoader = () => ({ type: SHOW_LOADER })
-export const hideLoader = () => ({ type: HIDE_LOADER })
+export const fetchData = () => ({ type: FETCH_DATA }) // Action creator для запроса данных, за ним следи сага
+export const showLoader = () => ({ type: SHOW_LOADER }) // Action creator для показа загрузчика
+export const hideLoader = () => ({ type: HIDE_LOADER }) // Action creator для скрытия загрузчика
 
 export default tableReducer

@@ -15,7 +15,7 @@ import Paper from '@mui/material/Paper'
 /* хук, позволяющий получить данные из стейта редакса */
 import { useSelector } from 'react-redux'
 /* компонент загрузчика */
-import { Preloader } from './../Preloader/Preloader'
+import { Preloader } from './../common/Preloader/Preloader'
 /* подсказка о загрузке страницы с кнопкой 'загрузить' */
 import LoadTablePrompt from './LoadTablePrompt/LoadTablePrompt'
 /* стили */

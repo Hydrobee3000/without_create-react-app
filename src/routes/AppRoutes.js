@@ -1,11 +1,11 @@
 import React, { Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Preloader } from '../components/Preloader/Preloader'
 
 /* динамический импорт с помощью react.lazy - позволяет подгружать код HomePage, при переходе на главную(домашнюю) страницу */
 const HomePage = React.lazy(() => import(/* webpackChunkName: "HomePage" */ '../pages/HomePage'))
 /* динамический импорт с помощью react.lazy - позволяет подгружать код TablePage, при переходе на страницу с таблицей */
 const TablePage = React.lazy(() => import(/* webpackChunkName: "TablePage" */ '../pages/TablePage'))
+import { Preloader } from './../components/common/Preloader/Preloader'
 
 /* пути приложения */
 const AppRoutes = () => {
