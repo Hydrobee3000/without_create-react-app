@@ -32,7 +32,7 @@ describe('проверка тестов в Header', () => {
   })
   test('Ссылка "Таблица с данными" присутствует в header', () => {
     render(<HeaderWithRouter />)
-    const tableLinkEl = screen.getByText(/Таблица с даннымиы/i)
+    const tableLinkEl = screen.getByText(/Таблица с данными/i)
 
     expect(tableLinkEl).toBeInTheDocument()
   })
